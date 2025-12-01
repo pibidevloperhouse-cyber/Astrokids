@@ -62,16 +62,16 @@ const NewPage = () => {
           <DialogTitle></DialogTitle>
           <DialogContent
             setOpen={setDialogOpen}
-            className="w-[90%] max-w-xl border-none bg-gradient-to-br from-[#0F172A] via-[#1E1B4B] to-[#312E81] text-white rounded-2xl p-0 shadow-2xl overflow-hidden"
+            className="w-[90%] max-w-xl border-none bg-[#2DB787] text-white rounded-2xl p-0 shadow-2xl overflow-hidden"
           >
             <div className="px-6 pt-8 pb-6 text-center">
-              <p className="text-sm tracking-wider uppercase text-indigo-300">
+              <p className="text-md font-bold tracking-wider uppercase text-[#FFEB3B]">
                 🌙 AstroKids Guidance
               </p>
               <h1 className="text-2xl md:text-3xl font-bold mt-2 leading-tight">
                 Select Your Country
               </h1>
-              <p className="text-indigo-200 text-sm mt-2">
+              <p className="text-[#D1FAE5] text-sm mt-2">
                 to help us understand your child better
               </p>
             </div>
@@ -105,14 +105,14 @@ const NewPage = () => {
               <p className="text-gray-600 text-sm text-center leading-relaxed px-2">
                 Your selection helps us provide accurate birth-chart insights
                 and meaningful parenting guidance aligned with{" "}
-                <span className="font-semibold text-indigo-700">
+                <span className="font-semibold text-[#2DB787]">
                   your culture, time zone, and environment.
                 </span>{" "}
               </p>
 
               <DialogClose asChild>
                 <button
-                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 rounded-2xl text-lg font-semibold hover:scale-[1.02] hover:shadow-lg transition-all"
+                  className="w-full new-gradient hover:brightness-110 transition-all text-white py-4 rounded-2xl text-lg font-semibold"
                   onClick={() => {
                     localStorage.setItem(
                       "paymentCountryData",
