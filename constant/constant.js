@@ -767,22 +767,42 @@ export const plans = [
   {
     title: "Starter Parenting",
     price: "Free",
-    content: "Foundational astrology insights for new parents.",
+    content: "Understand Your Child's Core Identity.",
+    features: [
+      "Child Astrology Profile",
+      "Birth Chart Insights",
+      "Life Path Direction",
+    ],
   },
   {
     title: "Pro Parenting",
     price: "₹499",
-    content: "Nurture your child's cosmic well-being with deeper insights.",
+    content: "Understand Their Needs. Support Daily Growth.",
+    features: [
+      "Health & Wellness Indicators",
+      "Personality & Physical Traits",
+      "Emotional Needs & Aspirations",
+    ],
   },
   {
     title: "Ultimate Parenting",
     price: "₹999",
-    content: "Academic, personal, and celestial growth for young minds.",
+    content: "Shape a Strong Future With Clear Guidance.",
+    features: [
+      "Education Guidance",
+      "Career Path Insights",
+      "Hidden Strength & Talent Analysis",
+    ],
   },
   {
     title: "Master Parenting",
     price: "₹1299",
-    content: "The ultimate roadmap for astrological success!",
+    content: "The Complete Roadmap for Life-Long Growth.",
+    features: [
+      "Key Life Lessons & Growth Themes",
+      "Relationship & Social Bond Guidance",
+      "Five-Year Progress Predictions",
+    ],
   },
 ];
 

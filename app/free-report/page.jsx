@@ -6,12 +6,14 @@ import {
   atma_names,
   bodyConsitutions,
   constitutionRatio,
+  currency,
   ista_devatas,
   lagnaIdentity,
   moonIdentity,
   nakshatraIdentity,
   nakshatraNumber,
   nakshatras,
+  NO_DECIMAL_CURRENCIES,
   PLANET_THEME,
   planetGemstone,
   pricing,
@@ -27,6 +29,7 @@ import { toast } from "react-toastify";
 import FlipCards from "@/components/Flipcards";
 import { Button } from "@/components/ui/button";
 import { dasa_status_table } from "@/constant/report";
+import { getSymbolFromCode } from "currency-code-symbol-map";
 
 const Loader = ({ steps, progress, currentStep }) => {
   return (
@@ -83,6 +86,25 @@ const PanchangDisplay = () => {
   const [loading, setLoading] = useState(true);
   const [currentDasha, setCurrentDasha] = useState(0);
 
+  const [paymentCountry, setPaymentCountry] = useState({
+    name: "India",
+    isoCode: "IN",
+    flag: "🇮🇳",
+    phonecode: "91",
+    currency: "INR",
+    latitude: "20.00000000",
+    longitude: "77.00000000",
+    timezones: [
+      {
+        zoneName: "Asia/Kolkata",
+        gmtOffset: 19800,
+        gmtOffsetName: "UTC+05:30",
+        abbreviation: "IST",
+        tzName: "Indian Standard Time",
+      },
+    ],
+  });
+
   const router = useRouter();
 
   const steps = [
@@ -106,6 +128,23 @@ const PanchangDisplay = () => {
     "Nov",
     "Dec",
   ];
+
+  useEffect(() => {
+    const paymentCountryData = localStorage.getItem("paymentCountryData");
+    if (paymentCountryData) {
+      setPaymentCountry(JSON.parse(paymentCountryData));
+    }
+  }, []);
+
+  const ConvertPrice = (price) => {
+    let curr = price * currency[paymentCountry.name];
+    curr = NO_DECIMAL_CURRENCIES.includes(paymentCountry.currency)
+      ? Math.ceil(curr)
+      : curr.toFixed(2);
+    return getSymbolFromCode(paymentCountry.currency)
+      ? getSymbolFromCode(paymentCountry.currency) + " " + curr
+      : paymentCountry.currency + " " + curr;
+  };
 
   const setDisplayContent = (userDetails, panchangData) => {
     if (userDetails && panchangData) {
@@ -876,7 +915,7 @@ const PanchangDisplay = () => {
                         {item.content}
                       </p>
                       <p className="text-[20px] font-bold text-[#2DB787] text-center mb-4">
-                        ₹{item.price}
+                        {ConvertPrice(item.price)}
                       </p>
                       <button
                         className="w-full bg-[#2DB787] text-white py-3 rounded-lg cursor-pointer transition-all duration-300"

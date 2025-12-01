@@ -1,12 +1,36 @@
-"use client";
-
 import { plans } from "@/constant/constant";
-import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
+import {
+  ArrowUpRight,
+  GraduationCap,
+  Heart,
+  Smile,
+  Trophy,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
-import React from "react";
+import { FaArrowUpRightDots, FaPerson } from "react-icons/fa6";
+import { IoIosPlanet } from "react-icons/io";
+import { PiPath } from "react-icons/pi";
+import { MdLockPerson, MdPersonSearch } from "react-icons/md";
+import { LuCalendarCheck } from "react-icons/lu";
+import PriceCarousel from "./PriceCarousel";
+import { TbRibbonHealth } from "react-icons/tb";
 
 const Section5 = () => {
+  const icons = [
+    <FaPerson />,
+    <IoIosPlanet />,
+    <PiPath />,
+    <TbRibbonHealth />,
+    <MdPersonSearch />,
+    <Smile />,
+    <GraduationCap />,
+    <Trophy />,
+    <MdLockPerson />,
+    <FaArrowUpRightDots />,
+    <Heart />,
+    <LuCalendarCheck />,
+  ];
+
   const router = useRouter();
   return (
     <div
@@ -25,7 +49,7 @@ const Section5 = () => {
           {plans.map((p, ind) => (
             <div
               key={ind}
-              className="bg-[#FFEB3B] relative p-5 rounded-xl border border-black"
+              className="bg-[#FFEB3B] h-full relative p-5 rounded-xl border border-black flex flex-col items-center justify-center"
             >
               <h1 className="text-[24px] font-bold leading-[1.2] mt-4">
                 {p.title}
@@ -36,19 +60,38 @@ const Section5 = () => {
                 </h2>
                 <p className="text-[#6F6C90] text-[16px]">/ Life Time</p>
               </div> */}
-              <p className="text-[16px] mt-3">{p.content}</p>
-              <div className="w-[60%] mt-3 mx-auto aspect-square relative">
+              <p className="text-[16px] font-medium text-center mt-3">
+                {p.content}
+              </p>
+              {/* <div className="w-[60%] mt-3 mx-auto aspect-square relative">
                 <Image
                   alt={p.title}
                   src={`/images/book-cover${ind}.png`}
                   fill
                   className="object-cover"
                 />
+              </div> */}
+              {ind !== 0 && (
+                <p>
+                  Includes Everything in{" "}
+                  {plans
+                    .slice(0, ind)
+                    .map((pl) => pl.title.replace(" Parenting", ""))
+                    .join(", ")}{" "}
+                  Parenting
+                </p>
+              )}
+              <div className="w-[100%] overflow-hidden flex-1 flex justify-end flex-col">
+                <PriceCarousel
+                  features={p.features}
+                  icons={icons}
+                  index={ind}
+                />
               </div>
+
               <div className="py-2"></div>
               <button
-                className={`absolute rounded-xl flex justify-center text-white py-2 items-center gap-2 bg-black
-                    hover:new-gradient text-[18px] font-semibold hover:brightness-110 transition-all w-max px-5 h-max -translate-y-1 left-1/2 -translate-x-1/2`}
+                className={`absolute bottom-0 rounded-xl flex justify-center text-white py-2 items-center gap-2 bg-black hover:new-gradient text-[18px] font-semibold hover:brightness-110 transition-all w-max px-5 h-max translate-y-1/2 left-1/2 -translate-x-1/2`}
                 onClick={() => router.push("/plans")}
               >
                 Compare Plans
