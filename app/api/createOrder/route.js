@@ -8,7 +8,6 @@ const razorpay = new Razorpay({
 
 export async function POST(req) {
   const { amount, currency } = await req.json();
-  console.log(amount, currency);
 
   try {
     const order = await razorpay.orders.create({
@@ -18,6 +17,7 @@ export async function POST(req) {
 
     return NextResponse.json(order);
   } catch (e) {
+    console.log(e);
     return NextResponse.json(
       { error: "Failed to create order", details: e.message || e },
       { status: 500 }

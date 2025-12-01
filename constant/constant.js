@@ -6546,6 +6546,8 @@ export const PLANET_THEME = {
   },
 };
 
+export const NO_DECIMAL_CURRENCIES = ["JPY", "KRW", "VND"];
+
 export const currency = {
   Afghanistan: 0.74,
   "Aland Islands": 0.0097,

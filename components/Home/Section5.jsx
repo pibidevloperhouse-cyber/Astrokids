@@ -30,13 +30,13 @@ const Section5 = () => {
               <h1 className="text-[24px] font-bold leading-[1.2] mt-4">
                 {p.title}
               </h1>
-              <div className="my-3 flex items-center gap-2">
+              {/* <div className="my-3 flex items-center gap-2">
                 <h2 className="text-[26px] font-bold leading-[1.2]">
                   {p.price}
                 </h2>
                 <p className="text-[#6F6C90] text-[16px]">/ Life Time</p>
-              </div>
-              <p className="text-[16px]">{p.content}</p>
+              </div> */}
+              <p className="text-[16px] mt-3">{p.content}</p>
               <div className="w-[60%] mt-3 mx-auto aspect-square relative">
                 <Image
                   alt={p.title}

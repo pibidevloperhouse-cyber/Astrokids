@@ -10,7 +10,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
-import { currency, pricing } from "@/constant/constant";
+import { currency, NO_DECIMAL_CURRENCIES, pricing } from "@/constant/constant";
 import { toast } from "react-toastify";
 import Loader from "@/components/Loader";
 import PhoneInput from "./PhoneInput";
@@ -98,10 +98,11 @@ const NewChildDetails = ({ session }) => {
           setLoading(false);
           return;
         }
-        amount = Math.ceil(amount * rate);
+        amount = NO_DECIMAL_CURRENCIES.includes(paymentCountry.currency)
+          ? Math.ceil(amount * rate)
+          : (amount * rate).toFixed(2);
       }
 
-      const NO_DECIMAL_CURRENCIES = ["JPY", "KRW", "VND"];
       res = await fetch("/api/createOrder", {
         method: "POST",
         body: JSON.stringify({
@@ -340,7 +341,10 @@ const NewChildDetails = ({ session }) => {
   }, [paymentEdit, router]);
 
   const ConvertPrice = (price) => {
-    let curr = Math.round(price * currency[paymentCountry.name]);
+    let curr = price * currency[paymentCountry.name];
+    curr = NO_DECIMAL_CURRENCIES.includes(paymentCountry.currency)
+      ? Math.ceil(curr)
+      : curr.toFixed(2);
     return getSymbolFromCode(paymentCountry.currency)
       ? getSymbolFromCode(paymentCountry.currency) + " " + curr
       : paymentCountry.currency + " " + curr;
@@ -588,7 +592,6 @@ const NewChildDetails = ({ session }) => {
                           {ConvertPrice(
                             parseInt(pricing[currentIndex].price) + 200
                           )}
-                          .00
                         </p>
                       </div>
                       <div className="flex w-full justify-between">
@@ -598,8 +601,8 @@ const NewChildDetails = ({ session }) => {
                         <p className="text-[16px] text-red-400 font-normal">
                           -
                           {currentIndex === 0
-                            ? `${ConvertPrice(399)}.00`
-                            : `${ConvertPrice(200)}.00`}
+                            ? `${ConvertPrice(399)}`
+                            : `${ConvertPrice(200)}`}
                         </p>
                       </div>
                     </div>
@@ -613,7 +616,7 @@ const NewChildDetails = ({ session }) => {
                           ? "Free"
                           : `${ConvertPrice(
                               parseInt(pricing[currentIndex].price)
-                            )}.00`}
+                            )}`}
                       </p>
                     </div>
                   </>
@@ -658,7 +661,9 @@ export const CountrySelect = ({
         <Button
           variant={isBordered ? "outline" : "default"}
           className={`flex justify-between bg-white hover:bg-white h-11 w-max py-2 rounded-none text-left ${
-            isBordered ? "border" : ""
+            isBordered
+              ? "border"
+              : "outline-none ring-0 focus-visible:border-0 focus-visible:ring-0"
           }`}
         >
           {paymentCountry ? (
@@ -671,7 +676,7 @@ export const CountrySelect = ({
           ) : (
             <></>
           )}
-          <ChevronsUpDown className="size-4 opacity-50" />
+          {isBordered && <ChevronsUpDown className="size-4 opacity-50" />}
         </Button>
       </PopoverTrigger>
 

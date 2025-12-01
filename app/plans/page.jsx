@@ -3,7 +3,7 @@ import { CountrySelect } from "@/components/ChildDetailsComponent";
 import Header from "@/components/Header";
 import NewFooter from "@/components/NewFooter";
 import { Label } from "@/components/ui/label";
-import { currency } from "@/constant/constant";
+import { currency, NO_DECIMAL_CURRENCIES } from "@/constant/constant";
 import { getSymbolFromCode } from "currency-code-symbol-map";
 import { ArrowUpRight, Check, MinusIcon, PlusIcon, X } from "lucide-react";
 import Head from "next/head";
@@ -297,7 +297,10 @@ const AboutPage = () => {
   }, []);
 
   const ConvertPrice = (price) => {
-    let curr = Math.round(price * currency[paymentCountry.name]);
+    let curr = price * currency[paymentCountry.name];
+    curr = NO_DECIMAL_CURRENCIES.includes(paymentCountry.currency)
+      ? Math.ceil(curr)
+      : curr.toFixed(2);
     return getSymbolFromCode(paymentCountry.currency)
       ? getSymbolFromCode(paymentCountry.currency) + " " + curr
       : paymentCountry.currency + " " + curr;
@@ -342,15 +345,10 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div className="pt-10 py-3 w-full flex flex-col items-center justify-center gap-6">
-          <h1 className="text-2xl md:text-3xl font-bold text-center">
-            Select Your Country
+        <div className="pt-10 py-3 px-5 w-full flex flex-col items-center justify-center gap-6">
+          <h1 className="text-2xl capitalize md:text-3xl font-bold text-center">
+            Select your country to help us understand your child better
           </h1>
-
-          <p className="text-gray-500 text-md md:text-lg text-center max-w-lg">
-            Choose your country to see local pricing and available payment
-            options.
-          </p>
 
           <div
             onClick={() => setOpen(!open)}
@@ -376,6 +374,12 @@ const AboutPage = () => {
               ▼
             </span>
           </div>
+
+          <p className="text-gray-500 text-md md:text-lg text-center max-w-5xl">
+            Your selection helps us provide accurate birth-chart insights and
+            meaningful parenting guidance aligned with your culture, time zone,
+            and environment.
+          </p>
         </div>
 
         <div id="plan-benefits">
