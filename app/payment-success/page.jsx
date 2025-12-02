@@ -38,7 +38,7 @@ const PaymentSuccess = () => {
         </p>
       </div>
       <div className="flex flex-col pb-10 relative justify-end items-center flex-1 h-full bg-gradient-to-b from-[#2DB787]/20 to-[#FFEB3B]/20">
-        <div className="w-[35%] absolute -top-[10%] bg-white rounded-2xl custom-shadow2 py-8">
+        <div className="w-[80%] md:w-[35%] absolute -top-[5%] md:-top-[10%] bg-white rounded-2xl custom-shadow2 py-8">
           <h1 className="text-[24px] text-center font-bold leading-[1.2]">
             Purchased {pricing[orderIndex].title} Report
           </h1>

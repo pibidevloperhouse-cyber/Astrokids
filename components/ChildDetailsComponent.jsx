@@ -70,16 +70,17 @@ const NewChildDetails = ({ session }) => {
       },
     ],
   });
+
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const savedIndex = localStorage.getItem("orderIndex");
     const paymentCountryData = localStorage.getItem("paymentCountryData");
-    if (savedIndex) {
-      setCurrentIndex(Number(savedIndex));
-    }
     if (paymentCountryData) {
       setPaymentCountry(JSON.parse(paymentCountryData));
+    }
+    if (savedIndex) {
+      setCurrentIndex(Number(savedIndex));
     }
   }, []);
 
@@ -157,7 +158,7 @@ const NewChildDetails = ({ session }) => {
                 autoClose: 3000,
               });
               router.push(
-                `/payment-success?orderIndex=${currentIndex}&orderId=${dataId.id}`
+                `/payment-success?productIndex=${currentIndex}&orderId=${dataId.id}`
               );
             } else {
               toast.error("Error. Try Again", {
@@ -423,6 +424,7 @@ const NewChildDetails = ({ session }) => {
                         setLocationInput={setLocationInput}
                         setPlace={setPlace}
                         setLatLon={setLatLon}
+                        paymentCountry={paymentCountry}
                       />
                     </div>
                   </div>
@@ -454,6 +456,7 @@ const NewChildDetails = ({ session }) => {
                         onChange={(value) => setNumber(value)}
                         className="bg-white dark:bg-slate-800/50 border-white/20 dark:border-slate-700/50 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400"
                         placeholder="Enter phone number"
+                        defaultCountry={paymentCountry.isoCode}
                       />
                     </div>
                   </div>

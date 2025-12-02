@@ -26,26 +26,18 @@ export default function LocationInput({
   setLocationInput,
   setPlace,
   setLatLon,
+  paymentCountry,
 }) {
-  const [selectedCountry, setSelectedCountry] = useState({
-    name: "India",
-    isoCode: "IN",
-    flag: "🇮🇳",
-    phonecode: "91",
-    currency: "INR",
-    latitude: "20.00000000",
-    longitude: "77.00000000",
-    timezones: [
-      {
-        zoneName: "Asia/Kolkata",
-        gmtOffset: 19800,
-        gmtOffsetName: "UTC+05:30",
-        abbreviation: "IST",
-        tzName: "Indian Standard Time",
-      },
-    ],
-  });
+  const [selectedCountry, setSelectedCountry] = useState(paymentCountry);
   const [filteredCities, setFilteredCities] = useState([]);
+
+  useEffect(() => {
+    if (paymentCountry && paymentCountry.isoCode) {
+      setSelectedCountry(paymentCountry);
+      setFilteredCities([]);
+      setLocationInput("");
+    }
+  }, [paymentCountry]);
 
   const handleCitySearch = (value) => {
     setLocationInput(value);

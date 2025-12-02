@@ -22,7 +22,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 
 const PhoneInput = React.forwardRef(
-  ({ className, onChange, value, ...props }, ref) => {
+  ({ className, onChange, value, defaultCountry = "IN", ...props }, ref) => {
     return (
       <RPNInput.default
         ref={ref}
@@ -33,7 +33,7 @@ const PhoneInput = React.forwardRef(
         smartCaret={false}
         value={value || undefined}
         onChange={(value) => onChange?.(value || "")}
-        defaultCountry="IN"
+        defaultCountry={defaultCountry}
         {...props}
       />
     );
