@@ -33,7 +33,7 @@ const Section1 = () => {
             <span className="text-[#FFEB3B]">Confident</span> Kids <br />
             Holistically
           </h1>
-          <div className="flex flex-col justify-center items-center mt-4 md:flex-row gap-5">
+          <div className="flex flex-col px-1 justify-center items-center mt-4 md:flex-row gap-5">
             <button
               className="relative flex items-center justify-between gap-2 p-0.5 font-bold text-black bg-white rounded-full transition-all overflow-hidden group hover:bg-transparent"
               onClick={() => {
@@ -52,16 +52,19 @@ const Section1 = () => {
               />
             </button>
             <button
-              className="relative flex items-center justify-between gap-2 p-0.5 font-bold text-black bg-white rounded-full transition-all overflow-hidden group hover:bg-transparent"
+              className="relative flex items-center justify-between gap-2 p-0.5 font-bold text-black bg-white rounded-full transition-all overflow-visible group hover:bg-transparent"
               onClick={() => {
                 localStorage.setItem("orderIndex", 0);
                 router.push("/child-details");
               }}
             >
+              {/* <div className="absolute transform -translate-y-full rotate-12 z-30 right-0 px-2 py-1 text-sm font-bold text-white bg-red-500 rounded animate-pulse">
+                Free
+              </div> */}
               <div className="absolute right-0.5 w-8 h-8 transition-all duration-300 ease-in-out rounded-full z-10 new-gradient group-hover:w-full group-hover:h-full group-hover:right-0"></div>
 
-              <span className="px-2 z-20 transition-colors duration-300 ease-in-out group-hover:text-white">
-                Unlock Your Free Report
+              <span className="px-2 z-20 text-xs md:text-lg font-bold transition-colors duration-300 ease-in-out group-hover:text-white">
+                Get Your Child’s Free Premium Cosmic Insights
               </span>
 
               <ArrowRightIcon
