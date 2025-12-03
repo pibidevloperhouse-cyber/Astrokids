@@ -228,6 +228,7 @@ const NewChildDetails = ({ session }) => {
           lon: latLon.lon,
           timezone: latLon.timezone,
           orderId,
+          plan: pricing[currentIndex].title,
         }),
       });
       if (res.status === 200) {

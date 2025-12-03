@@ -1,6 +1,8 @@
 import { MongoClient } from "mongodb";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import path from "path";
+import fs from "fs";
 
 const uri = process.env.MONGO_URL;
 const client = new MongoClient(uri);
@@ -23,6 +25,7 @@ export async function POST(request) {
       lon,
       timezone,
       orderId,
+      plan,
     } = await request.json();
 
     const result = await collection.updateOne(
@@ -41,6 +44,23 @@ export async function POST(request) {
           "childDetails.$.isChange": true,
         },
       }
+    );
+
+    const plans = [
+      "Starter Parenting",
+      "Pro Parenting",
+      "Ultimate Parenting",
+      "Master Parenting",
+    ];
+
+    const logo = fs.readFileSync(
+      path.join("public", "images", "new", "logo1.png")
+    );
+    const signature = fs.readFileSync(
+      path.join("public", "images", "new", "logo.png")
+    );
+    const planImage = fs.readFileSync(
+      path.join("public", "images", `book-cover${plans.indexOf(plan)}.png`)
     );
 
     try {
@@ -64,113 +84,126 @@ export async function POST(request) {
         subject: "Child Details Updated",
         text: `You will recieve the report of your child within 6 hours`,
 
-        html: `<div
-      style="
-        margin: auto;
-        width: 100vw;
-        max-width: 600px;
-        padding-top: 20px;
-        position: relative;
-      "
-    >
-      <div
-        style="
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 0;
-          width: 100vw;
+        html: `<div style="max-width:600px;margin:0 auto;padding:0;font-family:Arial, sans-serif;background:#fff;">
 
-          height: 100%;
-          max-width: 600px;
-          background: red;
-          opacity: 0.18;
-        "
-      ></div>
-      <div style="z-index: 10; color: black; opacity: 1">
-        <div
-          style="
-            width: 100%;
-            margin-top: 40px;
-            background-color: #210535;
-          "
-        >
-          <img
-            src="https://drive.usercontent.google.com/download?id=1MB_IKZo35iEaSzUCaZCqYT9XU39IKh8h"
-            alt="logo"
-            style="width: 40%; aspect-ratio: 16 / 9; margin: 0 auto"
+  <table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td style="background-color:#210535;padding:20px;text-align:center;">
+        <img 
+          src="cid:logo" 
+          style="width:160px;display:block;" 
+          alt="AstroKids"
+        />
+      </td>
+    </tr>
+  </table>
+
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:20px;">
+    <tr>
+      <td style="font-size:15px;color:#000;">
+
+        <table width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+
+            <td width="60%" valign="top">
+              <h2 style="margin:0 0 10px 0;">Dear User,</h2>
+              <p style="margin:0;">Your changes are noted!</p>
+              <p>
+                ${name} details are updated, and we're thrilled to begin creating your Child Personalized Astrology Report.
+              </p>
+            </td>
+
+            <td width="40%" align="right" valign="top">
+              <img 
+                src="cid:planImage"
+                width="160"
+                style="display:block;border-radius:6px;"
+                alt="Astrology"
+              />
+            </td>
+
+          </tr>
+        </table>
+
+        <h3 style="margin-top:25px;">
+          Your Order ID : ${orderId}
+        </h3>
+
+        <p>
+          Your report will be ready within 12 to 24 hours. Here's what you can look
+          forward to:
+        </p>
+
+        <ul>
+          <li>Personalized Astrology Insights & Parenting Tips</li>
+          <li>Discover Your Child's Astrological Blueprint</li>
+          <li>Supporting Strengths, Talents & Emotional Growth</li>
+          <li>Empowering You to Raise a Happy, Successful Child!</li>
+        </ul>
+
+        <h3 style="margin-top:25px;">
+          Your Updated Child Details
+        </h3>
+
+        <table width="100%" cellpadding="5" cellspacing="0" style="border-collapse:collapse;">
+          <tr>
+            <td width="35%"><strong>Name</strong></td>
+            <td>${name}</td>
+          </tr>
+          <tr>
+            <td><strong>DOB</strong></td>
+            <td>${dob}</td>
+          </tr>
+          <tr>
+            <td><strong>Birth Time</strong></td>
+            <td>${time}</td>
+          </tr>
+          <tr>
+            <td><strong>Place</strong></td>
+            <td>${place}</td>
+          </tr>
+          <tr>
+            <td><strong>Gender</strong></td>
+            <td>${gender}</td>
+          </tr>
+        </table>
+
+        <p style="margin-top:20px;">
+          You'll receive your report in your inbox shortly. If you have any questions,
+          feel free to contact us.
+        </p>
+
+        <div style="margin-top:50px;">
+          <p>Warm regards,</p>
+
+          <img 
+            src="cid:signature" 
+            width="110" 
+            style="display:block;margin-bottom:5px;" 
+            alt="Signature"
           />
-        </div>
-      </div>
-      <div style="padding: 0 20px">
-        <div style="width: 100%; display: flex">
-          <div style="flex: 1">
-            <h1 style="font-size: 20px; font-weight: bold">Dear User,</h1>
-            <p>Your changes are Noted!</p>
-            <p>
-              Child Details are updated, and we're thrilled to
-              begin creating your Personalized Child Astrology Report.
-            </p>
-          </div>
-          <div style="flex: 0.7">
-            <img
-              src="https://drive.google.com/uc?id=17nVMqLfRSmw34K6hryyfhZGZ1TOhvMBP"
-              alt="astrology"
-              style="width: 130%; height: 100%"
-            />
-          </div>
-        </div>
-        <div style="margin-top: 20px">
-          <h2 style="font-size: 20px; font-weight: bold">
-            Your Order ID is : ${orderId}
-          </h2>
-          <p>
-            Your report will be ready within 12 to 24 hours,and here's what you can
-            look forward to:
-          </p>
-          <ul>
-            <li>Personalized Astrology Insights & Parenting Tips</li>
-            <li>Discover Your Child's Astrological Blueprint</li>
-            <li>Supporting Strengths, Talents & Emotional Growth</li>
-            <li>Empowering You to Raise a Happy, Successful Child!</li>
-          </ul>
-          <p>
-            You'll receive your report in your inbox shortly. If you have any
-            questions, feel free to reach out to us!
-          </p>
-        </div>
-        <div
-          style="width: 100%;"
-        >
-          <h2 style="font-size: 20px; font-weight: bold">
-            Your Updated Child Details
-          </h2>
-          <div style="text-align: center">
-            <p>Name: ${name}</p>
-            <p>DOB: ${dob}</p>
-            <p>Birth Time: ${time}</p>
-            <p>Place: ${place}</p>
-            <p>Gender: ${gender}</p>
-          </div>
-        </div>
-        <div style="margin-top: 70px">
-          <p style="font-size: 20px">warm regards,</p>
-          <img src="https://drive.usercontent.google.com/download?id=1MB_IKZo35iEaSzUCaZCqYT9XU39IKh8h" alt="signature" width="100px" />
-          <p>The Astrokids Team</p>
-          <a>support@astrokids.ai</a>
-          <a
-            href="https://astrokids.ai/"
-            style="
-              display: block;
-              color: black;
-              text-decoration: none;
-              margin: 10 0px;
-            "
-            >astrokids.ai</a
+
+          <p><strong>The AstroKids Team</strong></p>
+          <p>support@astrokids.ai</p>
+
+          <a 
+            href="https://astrokids.ai/" 
+            style="color:#000;text-decoration:none;"
           >
+            astrokids.ai
+          </a>
         </div>
-      </div>
-    </div>`,
+
+      </td>
+    </tr>
+  </table>
+</div>
+`,
+        attachments: [
+          { filename: "logo.png", content: logo, cid: "logo" },
+          { filename: "signature.png", content: signature, cid: "signature" },
+          { filename: "planImage.png", content: planImage, cid: "planImage" },
+        ],
       });
     } catch (err) {
       console.log(err);
