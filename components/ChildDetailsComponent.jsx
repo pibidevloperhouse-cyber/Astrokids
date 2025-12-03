@@ -169,7 +169,6 @@ const NewChildDetails = ({ session }) => {
           },
 
           prefill: {
-            name: name,
             email: session.user.email,
             contact: number,
           },
