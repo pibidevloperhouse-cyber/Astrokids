@@ -92,14 +92,26 @@ const Section5 = () => {
               <div className="py-2"></div>
               <button
                 className={`absolute bottom-0 rounded-xl flex justify-center text-white py-2 items-center gap-2 bg-black hover:new-gradient text-[18px] font-semibold hover:brightness-110 transition-all w-max px-5 h-max translate-y-1/2 left-1/2 -translate-x-1/2`}
-                onClick={() => router.push("/plans")}
+                onClick={() => {
+                  if (ind === 0) {
+                    localStorage.setItem("orderIndex", ind);
+                    router.push("/child-details");
+                  } else {
+                    router.push("/plans");
+                  }
+                }}
               >
-                Compare Plans
+                {ind === 0 ? "Unlock Now" : "Compare Plans"}{" "}
                 <ArrowUpRight size={20} />
               </button>
-              {ind === 0 && (
+              {ind === 3 && (
                 <div className="absolute px-3 rounded-bl-xl rounded-tr-xl top-0 right-0 new-gradient text-white text-[16px]">
                   Parent's Most Explored
+                </div>
+              )}
+              {ind === 0 && (
+                <div className="absolute px-3 rounded-bl-xl rounded-tr-xl top-0 right-0 new-gradient text-white text-[16px]">
+                  Free
                 </div>
               )}
               {ind === 2 && (
