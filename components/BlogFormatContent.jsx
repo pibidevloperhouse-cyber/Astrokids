@@ -3,6 +3,7 @@ import Image from "next/image";
 import Header from "./Header";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const BlogFormatContent = ({ content }) => {
   const [recentPosts, setRecentPosts] = useState([]);
@@ -44,7 +45,7 @@ const BlogFormatContent = ({ content }) => {
   const BlogFormatContent = (text, index) => {
     text = text.replace("<a herf=", "<a href=");
     let link = text.match(/<a href="([^"]+)">([^<]+)<\/a>/);
-    console.log(link);
+    let bold = text.match(/<b>(.*?)<\/b>/);
     if (link) {
       return (
         <p
@@ -58,6 +59,17 @@ const BlogFormatContent = ({ content }) => {
           {text.split(link[0])[1]}
         </p>
       );
+    } else if (bold) {
+      return (
+        <p
+          key={index}
+          className="text-[#6F6C90] text-[16px] md:text-[18px] leading-relaxed mb-4"
+        >
+          {text.split(bold[0])[0]}
+          <strong className="font-bold">{bold[1]}</strong>
+          {text.split(bold[0])[1]}
+        </p>
+      );
     } else {
       return (
         <p
@@ -69,6 +81,7 @@ const BlogFormatContent = ({ content }) => {
       );
     }
   };
+
   return (
     <div className="w-screen h-full">
       <Header />
@@ -108,6 +121,25 @@ const BlogFormatContent = ({ content }) => {
                 );
               case "para":
                 return BlogFormatContent(block.content, index);
+              case "cta":
+                return (
+                  <div
+                    className="bg-[#2DB787] w-[90%] rounded-xl mx-auto p-2 md:p-4"
+                    key={index}
+                  >
+                    <p className="text-white text-center mt-2 text-[16px] md:text-[18px]">
+                      {block?.content}
+                    </p>
+                    <p className="text-white text-center mt-2 text-[16px] md:text-[18px]">
+                      <Link href={block?.link}>
+                        <div className="text-white font-bold text-center underline cursor-pointer">
+                          {block?.buttonText}
+                        </div>
+                      </Link>{" "}
+                      - {block?.content2}
+                    </p>
+                  </div>
+                );
               case "image":
                 return (
                   <div key={index} className="my-6">
@@ -120,7 +152,7 @@ const BlogFormatContent = ({ content }) => {
                       />
                     </div>
                     <p className="text-xl text-[#2DB787] mt-2 italic text-center">
-                      {block.content}
+                      {block?.content}
                     </p>
                   </div>
                 );

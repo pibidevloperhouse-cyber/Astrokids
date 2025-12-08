@@ -951,6 +951,14 @@ const Admin = () => {
                                       type: "highlight-list",
                                       items: [{ title: "", content: "" }],
                                     };
+                                  } else if (e.target.value === "cta") {
+                                    newContent[index] = {
+                                      type: "cta",
+                                      content: "",
+                                      buttonText: "",
+                                      link: "",
+                                      content2: "",
+                                    };
                                   }
                                   setBlogContent(newContent);
                                 }}
@@ -978,6 +986,7 @@ const Admin = () => {
                                   Highlight List
                                 </option>
                                 <option value="table">Table</option>
+                                <option value="cta">Call to Action</option>
                               </select>
                             </div>
 
@@ -1002,6 +1011,77 @@ const Admin = () => {
                                   required
                                 />
                               </div>
+                            )}
+
+                            {section.type === "cta" && (
+                              <>
+                                <div>
+                                  <label className="block text-gray-700">
+                                    Content
+                                  </label>
+                                  <input
+                                    type="text"
+                                    value={section.content}
+                                    onChange={(e) => {
+                                      const newContent = [...blogContent];
+                                      newContent[index].content =
+                                        e.target.value;
+                                      setBlogContent(newContent);
+                                    }}
+                                    className="w-full p-2 border border-gray-300 rounded mt-1"
+                                    required
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-gray-700">
+                                    Button Text
+                                  </label>
+                                  <input
+                                    type="text"
+                                    value={section.buttonText}
+                                    onChange={(e) => {
+                                      const newContent = [...blogContent];
+                                      newContent[index].buttonText =
+                                        e.target.value;
+                                      setBlogContent(newContent);
+                                    }}
+                                    className="w-full p-2 border border-gray-300 rounded mt-1"
+                                    required
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-gray-700">
+                                    Link
+                                  </label>
+                                  <input
+                                    type="text"
+                                    value={section.link}
+                                    onChange={(e) => {
+                                      const newContent = [...blogContent];
+                                      newContent[index].link = e.target.value;
+                                      setBlogContent(newContent);
+                                    }}
+                                    className="w-full p-2 border border-gray-300 rounded mt-1"
+                                    required
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-gray-700">
+                                    Additional Content
+                                  </label>
+                                  <input
+                                    type="text"
+                                    value={section.content2}
+                                    onChange={(e) => {
+                                      const newContent = [...blogContent];
+                                      newContent[index].content2 =
+                                        e.target.value;
+                                      setBlogContent(newContent);
+                                    }}
+                                    className="w-full p-2 border border-gray-300 rounded mt-1"
+                                  />
+                                </div>
+                              </>
                             )}
 
                             {section.type === "image" && (
@@ -2060,6 +2140,14 @@ const Admin = () => {
                                     type: "highlight-list",
                                     items: [{ title: "", content: "" }],
                                   };
+                                } else if (e.target.value === "cta") {
+                                  newContent[index] = {
+                                    type: "cta",
+                                    content: "",
+                                    buttonText: "",
+                                    link: "",
+                                    content2: "",
+                                  };
                                 }
                                 setBlogContent(newContent);
                               }}
@@ -2087,8 +2175,78 @@ const Admin = () => {
                                 Highlight List
                               </option>
                               <option value="table">Table</option>
+                              <option value="cta">Call to Action</option>
                             </select>
                           </div>
+
+                          {section.type === "cta" && (
+                            <>
+                              <div>
+                                <label className="block text-gray-700">
+                                  Content
+                                </label>
+                                <input
+                                  type="text"
+                                  value={section.content}
+                                  onChange={(e) => {
+                                    const newContent = [...blogContent];
+                                    newContent[index].content = e.target.value;
+                                    setBlogContent(newContent);
+                                  }}
+                                  className="w-full p-2 border border-gray-300 rounded mt-1"
+                                  required
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-gray-700">
+                                  Button Text
+                                </label>
+                                <input
+                                  type="text"
+                                  value={section.buttonText}
+                                  onChange={(e) => {
+                                    const newContent = [...blogContent];
+                                    newContent[index].buttonText =
+                                      e.target.value;
+                                    setBlogContent(newContent);
+                                  }}
+                                  className="w-full p-2 border border-gray-300 rounded mt-1"
+                                  required
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-gray-700">
+                                  Link
+                                </label>
+                                <input
+                                  type="text"
+                                  value={section.link}
+                                  onChange={(e) => {
+                                    const newContent = [...blogContent];
+                                    newContent[index].link = e.target.value;
+                                    setBlogContent(newContent);
+                                  }}
+                                  className="w-full p-2 border border-gray-300 rounded mt-1"
+                                  required
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-gray-700">
+                                  Additional Content
+                                </label>
+                                <input
+                                  type="text"
+                                  value={section.content2}
+                                  onChange={(e) => {
+                                    const newContent = [...blogContent];
+                                    newContent[index].content2 = e.target.value;
+                                    setBlogContent(newContent);
+                                  }}
+                                  className="w-full p-2 border border-gray-300 rounded mt-1"
+                                />
+                              </div>
+                            </>
+                          )}
 
                           {(section.type === "title" ||
                             section.type === "subtitle" ||
