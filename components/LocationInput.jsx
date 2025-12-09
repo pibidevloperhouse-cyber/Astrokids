@@ -71,6 +71,7 @@ export default function LocationInput({
 
   useEffect(() => {
     if (locationInput) {
+      console.log(locationInput);
       const country = locationInput.split(", ").pop();
       const countryData = Country.getAllCountries().find(
         (c) => c.name.toLowerCase() === country.toLowerCase()

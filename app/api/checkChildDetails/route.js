@@ -3,45 +3,16 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
-    const { email, name, dob, time, place, gender, number } =
+    const { email, name, dob, time, place, gender, number, plan } =
       await request.json();
 
     const client = await clientPromise;
     const database = client.db("AstroKids");
-
-    const childCollection = database.collection("childDetails");
     const requestCollection = database.collection("requestDetails");
-    const user = await childCollection.findOne({ email });
-
-    if (user) {
-      const childExists = user.childDetails.some(
-        (child) =>
-          child.name === name && child.dob === dob && child.time === time
-      );
-
-      if (childExists) {
-        return NextResponse.json(
-          { message: "Child details already exist" },
-          { status: 400 }
-        );
-      }
-    }
 
     const requestUser = await requestCollection.findOne({ email });
 
     if (requestUser) {
-      const childExists = requestUser.childDetails.some(
-        (child) =>
-          child.name === name && child.dob === dob && child.time === time
-      );
-
-      if (childExists) {
-        return NextResponse.json(
-          { message: "Child already exists in request" },
-          { status: 400 }
-        );
-      }
-
       await requestCollection.updateOne(
         { email },
         {
@@ -53,6 +24,7 @@ export async function POST(request) {
               place,
               gender,
               number,
+              plan,
               addedAt: new Date(),
             },
           },

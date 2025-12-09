@@ -39,6 +39,7 @@ const NewChildDetails = ({ session }) => {
   const [place, setPlace] = useState("");
   const [gender, setGender] = useState("");
   const [number, setNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [latLon, setLatLon] = useState({
     lat: 0,
     lon: 0,
@@ -48,7 +49,7 @@ const NewChildDetails = ({ session }) => {
   const router = useRouter();
   const paymentEdit = useSearchParams().get("paymentEdit") || false;
   const orderId = useSearchParams().get("orderId");
-  const [locationInput, setLocationInput] = useState("");
+  const [locationInputText, setLocationInputText] = useState("");
   const formRef = useRef(null);
   const [api, setApi] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
@@ -136,7 +137,7 @@ const NewChildDetails = ({ session }) => {
             const res1 = await fetch("/api/addChildDetails", {
               method: "POST",
               body: JSON.stringify({
-                email: session.user.email,
+                email: email,
                 name: name,
                 dob: dob,
                 time: time,
@@ -169,7 +170,7 @@ const NewChildDetails = ({ session }) => {
           },
 
           prefill: {
-            email: session.user.email,
+            email: email,
             contact: number,
           },
         };
@@ -216,7 +217,7 @@ const NewChildDetails = ({ session }) => {
       const res = await fetch("/api/updateChild", {
         method: "POST",
         body: JSON.stringify({
-          email: session.user.email,
+          email: email,
           name,
           dob,
           time,
@@ -257,13 +258,14 @@ const NewChildDetails = ({ session }) => {
       await fetch("/api/checkChildDetails", {
         method: "POST",
         body: JSON.stringify({
-          email: session.user.email,
+          email: email,
           name,
           dob,
           time,
           place,
           gender,
           number,
+          plan: currentIndex,
         }),
       });
 
@@ -330,7 +332,7 @@ const NewChildDetails = ({ session }) => {
           setPlace(data.childDetails.place);
           setGender(data.childDetails.gender);
           setNumber(data.childDetails.number);
-          setLocationInput(data.childDetails.place);
+          setLocationInputText(data.childDetails.place);
         } else if (res.status === 400) {
           const data = await res.json();
           toast.error(data.message, { position: "top-right" });
@@ -420,8 +422,8 @@ const NewChildDetails = ({ session }) => {
                         Birth Location
                       </label>
                       <LocationInput
-                        locationInput={locationInput}
-                        setLocationInput={setLocationInput}
+                        locationInput={locationInputText}
+                        setLocationInput={setLocationInputText}
                         setPlace={setPlace}
                         setLatLon={setLatLon}
                         paymentCountry={paymentCountry}
@@ -461,13 +463,23 @@ const NewChildDetails = ({ session }) => {
                     </div>
                   </div>
 
-                  <div
-                    className={`grid grid-cols-1 w-full gap-5 mb-4 place-items-end ${
-                      currentIndex != null && currentIndex > 0
-                        ? "md:grid-cols-2"
-                        : "mb-6"
-                    }`}
-                  >
+                  <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-5 mb-4 place-items-end">
+                    <div className="w-full">
+                      <label className="block text-[14px] font-normal mb-1">
+                        Email{" "}
+                        {currentIndex != 0 &&
+                          "(Report will sent to your email)"}
+                      </label>
+                      <input
+                        type="text"
+                        value={email}
+                        placeholder="Enter Email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full p-2 border text-gray-700 bg-white outline-none border-gray-300 rounded focus:ring focus:ring-purple-300 transition-all placeholder:text-black"
+                        required
+                      />
+                    </div>
+
                     {currentIndex != null && currentIndex > 0 && (
                       <div className="w-full relative">
                         <div className="w-full">
@@ -491,6 +503,9 @@ const NewChildDetails = ({ session }) => {
                         </div>
                       </div>
                     )}
+                  </div>
+
+                  <div className="grid grid-cols-1 w-full mb-6">
                     <div className="w-full">
                       <button
                         type="submit"

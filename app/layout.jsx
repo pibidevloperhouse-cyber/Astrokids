@@ -134,6 +134,10 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
+        <script
+          src="https://checkout.razorpay.com/v1/checkout.js"
+          async
+        ></script>
       </head>
       <body
         className={`${customFont.variable} ${openSans.variable} ${quicksand.variable}`}
