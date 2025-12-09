@@ -464,7 +464,7 @@ const NewChildDetails = ({ session }) => {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-5 mb-4 place-items-end">
-                    <div className="w-full">
+                    <div className="w-full relative">
                       <label className="block text-[14px] font-normal mb-1">
                         Email{" "}
                         {currentIndex != 0 &&
@@ -503,10 +503,12 @@ const NewChildDetails = ({ session }) => {
                         </div>
                       </div>
                     )}
-                  </div>
 
-                  <div className="grid grid-cols-1 w-full mb-6">
-                    <div className="w-full">
+                    <div
+                      className={`w-full relative ${
+                        currentIndex != 0 ? "md:col-span-2" : "md:col-span-1"
+                      }`}
+                    >
                       <button
                         type="submit"
                         disabled={loading}

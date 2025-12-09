@@ -33,7 +33,6 @@ export default function LocationInput({
 
   useEffect(() => {
     if (paymentCountry && paymentCountry.isoCode && locationInput === "") {
-      console.log("HEllo");
       setSelectedCountry(paymentCountry);
       setFilteredCities([]);
       setLocationInput("");
