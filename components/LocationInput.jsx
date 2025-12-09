@@ -32,7 +32,8 @@ export default function LocationInput({
   const [filteredCities, setFilteredCities] = useState([]);
 
   useEffect(() => {
-    if (paymentCountry && paymentCountry.isoCode) {
+    if (paymentCountry && paymentCountry.isoCode && locationInput === "") {
+      console.log("HEllo");
       setSelectedCountry(paymentCountry);
       setFilteredCities([]);
       setLocationInput("");
