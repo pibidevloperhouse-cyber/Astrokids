@@ -1,12 +1,10 @@
-import { MongoClient } from "mongodb";
-import { NextResponse } from "next/server";
+import clientPromise from "@/lib/mongo";
 
-const uri = process.env.MONGO_URL;
-const client = new MongoClient(uri);
+import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
-    await client.connect();
+    const client = await clientPromise;
     const database = client.db("AstroKids");
     const collection = database.collection("childDetails");
 

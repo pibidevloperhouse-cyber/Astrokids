@@ -1,12 +1,9 @@
-import { MongoClient } from "mongodb";
+import clientPromise from "@/lib/mongo";
 import { NextResponse } from "next/server";
 
-const uri = process.env.MONGO_URL;
-const client = new MongoClient(uri);
-
-export async function POST(request) {
+export async function POST() {
   try {
-    await client.connect();
+    const client = await clientPromise;
     const database = client.db("AstroKids");
     const collection = database.collection("requestDetails");
 
@@ -21,7 +18,5 @@ export async function POST(request) {
       { message: "Internal server error" },
       { status: 500 }
     );
-  } finally {
-    await client.close();
   }
 }

@@ -1,8 +1,5 @@
-import { MongoClient } from "mongodb";
+import clientPromise from "@/lib/mongo";
 import { NextResponse } from "next/server";
-
-const uri = process.env.MONGO_URL;
-const client = new MongoClient(uri);
 
 export async function GET(request) {
   try {
@@ -16,7 +13,7 @@ export async function GET(request) {
       );
     }
 
-    await client.connect();
+    const client = await clientPromise;
     const database = client.db("AstroKids");
     const collection = database.collection("blogs");
 
@@ -33,7 +30,5 @@ export async function GET(request) {
       { message: "Error fetching blog post" },
       { status: 500 }
     );
-  } finally {
-    await client.close();
   }
 }

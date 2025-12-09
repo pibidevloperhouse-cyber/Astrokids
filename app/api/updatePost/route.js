@@ -1,9 +1,6 @@
 import { MongoClient, ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 
-const uri = process.env.MONGO_URL;
-const client = new MongoClient(uri);
-
 export async function PUT(request) {
   try {
     const {
@@ -24,7 +21,7 @@ export async function PUT(request) {
       );
     }
 
-    await client.connect();
+    const client = await clientPromise;
     const database = client.db("AstroKids");
     const collection = database.collection("blogs");
 
@@ -57,7 +54,5 @@ export async function PUT(request) {
       { message: "Error updating blog" },
       { status: 500 }
     );
-  } finally {
-    await client.close();
   }
 }

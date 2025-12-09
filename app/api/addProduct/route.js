@@ -1,37 +1,27 @@
-import { MongoClient } from "mongodb";
+import clientPromise from "@/lib/mongo";
 import { NextResponse } from "next/server";
-
-const uri = process.env.MONGO_URL;
-const client = new MongoClient(uri);
 
 export async function POST(request) {
   try {
     const {
       title,
-        price,
-        description,
-        stock,
-        sign,
-        nakshatra,
-        image,
-        vendorId,
+      price,
+      description,
+      stock,
+      sign,
+      nakshatra,
+      image,
+      vendorId,
     } = await request.json();
 
-    if (
-      !title ||
-        !price ||
-        !description ||
-        !stock ||
-        !image ||
-        !vendorId
-    ) {
+    if (!title || !price || !description || !stock || !image || !vendorId) {
       return NextResponse.json(
         { message: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    await client.connect();
+    const client = await clientPromise;
     const database = client.db("AstroKids");
     const collection = database.collection("Products");
 
@@ -57,7 +47,5 @@ export async function POST(request) {
       { message: "Error adding blog post" },
       { status: 500 }
     );
-  } finally {
-    await client.close();
   }
 }

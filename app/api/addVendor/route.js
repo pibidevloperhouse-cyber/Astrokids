@@ -1,15 +1,12 @@
-import { MongoClient } from "mongodb";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-
-const uri = process.env.MONGO_URL;
-const client = new MongoClient(uri);
+import clientPromise from "@/lib/mongo";
 
 export async function POST(request) {
   try {
     const data = await request.json();
 
-    await client.connect();
+    const client = await clientPromise;
     const db = client.db("AstroKids");
     const collection = db.collection("Vendors");
 
@@ -38,7 +35,5 @@ export async function POST(request) {
   } catch (error) {
     console.error("Error adding vendor:", error);
     return NextResponse.json({ message: "Server Error" }, { status: 500 });
-  } finally {
-    await client.close();
   }
 }

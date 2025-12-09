@@ -1,10 +1,7 @@
-import { MongoClient } from "mongodb";
 import nodemailer from "nodemailer";
 import fs from "fs";
 import path from "path";
-
-const uri = process.env.MONGO_URL;
-const client = new MongoClient(uri);
+import clientPromise from "@/lib/mongo";
 
 export async function POST(request) {
   try {
@@ -27,7 +24,7 @@ export async function POST(request) {
       return new Response("Missing fields", { status: 400 });
     }
 
-    await client.connect();
+    const client = await clientPromise;
     const database = client.db("AstroKids");
     const collection = database.collection("childDetails");
 
@@ -217,7 +214,5 @@ export async function POST(request) {
   } catch (error) {
     console.error("Error adding child details:", error);
     return new Response("Internal server error", { status: 500 });
-  } finally {
-    await client.close();
   }
 }

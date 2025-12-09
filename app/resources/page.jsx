@@ -4,7 +4,7 @@ import NewFooter from "@/components/NewFooter";
 import { sampleBlogs } from "@/constant/constant";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 
 const BlogsPage = () => {
   const buttons = [

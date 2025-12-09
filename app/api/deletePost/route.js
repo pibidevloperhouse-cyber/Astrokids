@@ -1,8 +1,5 @@
-import { MongoClient } from "mongodb";
+import clientPromise from "@/lib/mongo";
 import { NextResponse } from "next/server";
-
-const uri = process.env.MONGO_URL;
-const client = new MongoClient(uri);
 
 export async function DELETE(request) {
   try {
@@ -15,7 +12,7 @@ export async function DELETE(request) {
       );
     }
 
-    await client.connect();
+    const client = await clientPromise;
     const database = client.db("AstroKids");
     const collection = database.collection("blogs");
 
@@ -35,7 +32,5 @@ export async function DELETE(request) {
       { message: "Error deleting blog" },
       { status: 500 }
     );
-  } finally {
-    await client.close();
   }
 }

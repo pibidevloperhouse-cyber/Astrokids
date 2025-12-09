@@ -1,13 +1,10 @@
-import { MongoClient } from "mongodb";
-
-const uri = process.env.MONGO_URL;
-const client = new MongoClient(uri);
+import clientPromise from "@/lib/mongo";
 
 export async function PUT(request) {
   const { email, isChecked, orderId } = await request.json();
 
   try {
-    await client.connect();
+    const client = await clientPromise;
     const database = client.db("AstroKids");
     const collection = database.collection("childDetails");
 
@@ -28,7 +25,5 @@ export async function PUT(request) {
   } catch (error) {
     console.error("Error updating child status:", error);
     return new Response("Error updating child status", { status: 500 });
-  } finally {
-    await client.close();
   }
 }

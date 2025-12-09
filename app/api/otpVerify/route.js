@@ -1,10 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { MongoClient } from "mongodb";
 import crypto from "crypto";
-
-const uri = process.env.MONGO_URL;
-const client = new MongoClient(uri);
 
 export async function POST(request) {
   const { email } = await request.json();
