@@ -29,7 +29,7 @@ const AboutPage = () => {
       desc: "As a dad of two, I know parenting can feel overwhelming. We built AstroKids to turn cosmic insights into simple, daily wins",
     },
     {
-      title: "Guru Vijay Muthukumar",
+      title: "Palani Kumar Murugesan",
       con: "CTO & Cosmic Code Wizard",
       desc: "Technology should empower, not complicate. Our AI models make Vedic astrology accessible to every family.",
     },
