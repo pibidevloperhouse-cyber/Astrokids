@@ -62,7 +62,7 @@ const NewPage = () => {
           <DialogTitle></DialogTitle>
           <DialogContent
             setOpen={setDialogOpen}
-            className="w-[90%] max-w-xl border-none bg-[#2DB787] text-white rounded-2xl p-0 shadow-2xl overflow-hidden"
+            className="w-[90%] max-w-xl z-[1000] border-none bg-[#2DB787] text-white rounded-2xl p-0 shadow-2xl overflow-hidden"
           >
             <div className="px-6 pt-8 pb-6 text-center">
               <p className="text-md font-bold tracking-wider uppercase text-[#FFEB3B]">

@@ -44,7 +44,7 @@ const Header = ({ status = false }) => {
 
   return (
     <div>
-      <div className="w-screen fixed top-0 z-[1000] bg-transparent xl:bg-[#02030B] px-3 md:px-14 py-4">
+      <div className="w-screen fixed top-0 z-[999] bg-transparent xl:bg-[#02030B] px-3 md:px-14 py-4">
         <div className="flex max-xl:bg-[#0E0C15] p-2 xl:p-0 rounded-xl items-center justify-between w-full">
           <Link href={"/"} className="font-bold text-white text-2xl">
             astrokids<span className="text-xs px-0.5 text-[#5DF2CF]">✦</span>ai

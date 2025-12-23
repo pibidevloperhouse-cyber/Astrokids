@@ -160,9 +160,9 @@ const PanchangDisplay = () => {
       let start = panchangData.panchang.nakshatra_number;
       const favourableNakshatra = [];
 
-      const luckyNumber =
-        nakshatraNumber[panchangData.planets[2].nakshatra.split(" ").join("")];
-      [0, 1, 2].forEach((_) => {
+      const luckyNumber = nakshatraNumber[panchangData.planets[2].nakshatra];
+
+      [(0, 1, 2)].forEach((_) => {
         favourableNakshatra.push(nakshatras[start % 27]);
         start += 9;
       });
@@ -193,7 +193,7 @@ const PanchangDisplay = () => {
         ishtaDevatha: ista_devatas[isthadevathaLord],
         favourableNakshatra: favourableNakshatra.join(", "),
         AtmaKaragam: `${atma} , ${atma_names[atma]}`,
-        luckyNumber: luckyNumber.join(", "),
+        luckyNumber: luckyNumber && luckyNumber.join(", "),
         lifeStone: planetGemstone[panchangData.planets[0].zodiac_lord],
         beneficialStone: planetGemstone[fiveHouseLord],
         luckyStone: planetGemstone[ninthHouseLord],
