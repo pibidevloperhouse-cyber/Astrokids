@@ -146,13 +146,15 @@ export default function RootLayout({ children }) {
         <ClarityWrapper />
         <Suspense>
           <SessionWrapper>
-            <BlogProvider>
-              <Script
-                type="text/javascript"
-                src="https://checkout.razorpay.com/v1/checkout.js"
-              />
-              {children}
-            </BlogProvider>
+            <CartProvider>
+              <BlogProvider>
+                <Script
+                  type="text/javascript"
+                  src="https://checkout.razorpay.com/v1/checkout.js"
+                />
+                {children}
+              </BlogProvider>
+            </CartProvider>
             <ToastContainer />
           </SessionWrapper>
         </Suspense>
