@@ -65,7 +65,7 @@ const BlogFormatContent = ({ content }) => {
               localStorage.setItem("currentBlog", JSON.stringify(blog));
               router.push(`/blogs/${blog.slug}`);
             }}
-            className="text-[#2DB787] hover:underline"
+            className="text-[#2DB787] inline-block hover:underline"
           >
             {link[2]}
           </button>

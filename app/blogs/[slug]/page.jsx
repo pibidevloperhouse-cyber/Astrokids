@@ -13,9 +13,10 @@ export default function BlogPage() {
   useEffect(() => {
     const fetchBlogData = () => {
       const slug = pathname.split("/blogs/")[1];
+
       try {
-        const blog = Blogs.find((b) => b.slug === slug).content;
-        setBlogData(blog);
+        const blog = Blogs?.find((b) => b.slug === slug);
+        setBlogData(blog?.content);
       } catch (error) {
         console.log("Error fetching blog data:", error);
       }
