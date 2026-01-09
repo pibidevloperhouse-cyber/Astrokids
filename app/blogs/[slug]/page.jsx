@@ -15,7 +15,9 @@ export default function BlogPage() {
       const slug = pathname.split("/blogs/")[1];
 
       try {
+        console.log(Blogs, slug);
         const blog = Blogs?.find((b) => b.slug === slug);
+        console.log(blog);
         setBlogData(blog?.content);
       } catch (error) {
         console.log("Error fetching blog data:", error);
