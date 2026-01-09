@@ -56,19 +56,9 @@ const BlogFormatContent = ({ content }) => {
           className="text-[#6F6C90] text-[16px] md:text-[18px] leading-relaxed mb-4"
         >
           {text.split(link[0])[0]}
-          <button
-            onClick={() => {
-              let blog = Blogs.find(
-                (b) => b.slug === link[1].split("/blogs/")[1]
-              );
-
-              localStorage.setItem("currentBlog", JSON.stringify(blog));
-              router.push(`/blogs/${blog.slug}`);
-            }}
-            className="text-[#2DB787] inline-block hover:underline"
-          >
+          <Link href={link[1]} className="text-[#2DB787] hover:underline">
             {link[2]}
-          </button>
+          </Link>
           {text.split(link[0])[1]}
         </p>
       );

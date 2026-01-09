@@ -1,32 +1,31 @@
 "use client";
 
 import BlogFormatContent from "@/components/BlogFormatContent";
-import { useBlog } from "@/context/BlogContext";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function BlogPage() {
   const [blogData, setBlogData] = useState(null);
   const pathname = usePathname();
-  const { Blogs, isLoading, fetchBlogs } = useBlog();
 
   useEffect(() => {
-    if (Blogs) {
-      fetchBlogData();
-    } else {
-      fetchBlogs();
-      fetchBlogData();
-    }
+    fetchBlogData();
   }, []);
 
-  const fetchBlogData = () => {
+  const fetchBlogData = async () => {
     const slug = pathname.split("/blogs/")[1];
 
     try {
-      console.log(Blogs, slug);
-      const blog = Blogs?.find((b) => b.slug === slug);
-      console.log(blog);
-      setBlogData(blog?.content);
+      const res = await fetch(`/api/getPost?slug=${slug}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setBlogData(data.content);
+      } else {
+        console.log("Blog not found");
+      }
     } catch (error) {
       console.log("Error fetching blog data:", error);
     }

@@ -18,8 +18,7 @@ const BlogsPage = () => {
   ];
   const [isSelect, setIsSelect] = useState(0);
   const router = useRouter();
-  const { Blogs } = useBlog();
-  const [displayBlogs, setDisplayBlogs] = useState(Blogs || sampleBlogs);
+  const [displayBlogs, setDisplayBlogs] = useState(sampleBlogs);
 
   const getBlogImage = (content) => {
     const imageSection = content.find((section) => section.type === "image");
@@ -27,8 +26,16 @@ const BlogsPage = () => {
   };
 
   useEffect(() => {
-    setDisplayBlogs(Blogs);
-  }, [Blogs]);
+    const fetchBlogs = async () => {
+      const res = await fetch("/api/getAllPosts", {
+        cache: "no-store",
+      });
+      const data = await res.json();
+      setDisplayBlogs(data || []);
+    };
+
+    fetchBlogs();
+  }, []);
 
   return (
     <div>
