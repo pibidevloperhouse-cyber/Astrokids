@@ -1,17 +1,17 @@
 "use client";
 import BlogFormatContent from "@/components/BlogFormatContent";
 import { useBlog } from "@/context/BlogContext";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function BlogPage() {
   const [blogData, setBlogData] = useState(null);
-  const router = useRouter();
+  const pathname = usePathname();
   const { blogs, isLoading } = useBlog();
 
   useEffect(() => {
     const fetchBlogData = () => {
-      const slug = router.pathname.split("/blogs/")[1];
+      const slug = pathname.split("/blogs/")[1];
       try {
         const blog = blogs.find((b) => b.slug === slug).content;
         setBlogData(blog);
