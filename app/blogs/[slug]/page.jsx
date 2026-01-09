@@ -7,12 +7,14 @@ import { useEffect, useState } from "react";
 export default function BlogPage() {
   const [blogData, setBlogData] = useState(null);
   const pathname = usePathname();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchBlogData();
   }, []);
 
   const fetchBlogData = async () => {
+    setIsLoading(true);
     const slug = pathname.split("/blogs/")[1];
 
     try {
@@ -29,6 +31,7 @@ export default function BlogPage() {
     } catch (error) {
       console.log("Error fetching blog data:", error);
     }
+    setIsLoading(false);
   };
 
   if (isLoading) {
