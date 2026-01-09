@@ -21,7 +21,6 @@ export const BlogProvider = ({ children }) => {
         if (res.status === 200) {
           const data = await res.json();
           setBlogs(data);
-          setDisplayBlogs(data);
         } else {
           console.log("Failed to fetch blogs");
         }

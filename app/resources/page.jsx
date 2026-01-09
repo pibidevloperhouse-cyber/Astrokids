@@ -17,7 +17,6 @@ const BlogsPage = () => {
     "Success Stories",
   ];
   const [isSelect, setIsSelect] = useState(0);
-  const [displayBlogs, setDisplayBlogs] = useState(sampleBlogs);
   const router = useRouter();
   const { blogs, isLoading } = useBlog();
 
@@ -73,9 +72,9 @@ const BlogsPage = () => {
               </div>
 
               <div>
-                {displayBlogs.length > 0 ? (
+                {blogs.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 place-items-center mt-5">
-                    {displayBlogs.map((blog) => (
+                    {blogs.map((blog) => (
                       <div
                         key={blog._id}
                         onClick={() => {
