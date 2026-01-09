@@ -1,7 +1,6 @@
 "use client";
 import Header from "@/components/Header";
 import NewFooter from "@/components/NewFooter";
-import { sampleBlogs } from "@/constant/constant";
 import { useBlog } from "@/context/BlogContext";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

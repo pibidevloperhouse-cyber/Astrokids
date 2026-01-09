@@ -1,12 +1,12 @@
 "use client";
 
-import { blogs } from "@/constant/constant";
+import { sampleBlogs } from "@/constant/constant";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const BlogContext = createContext();
 
 export const BlogProvider = ({ children }) => {
-  const [Blogs, setBlogs] = useState(blogs);
+  const [Blogs, setBlogs] = useState(sampleBlogs);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
