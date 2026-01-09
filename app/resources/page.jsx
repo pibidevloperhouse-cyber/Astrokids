@@ -82,7 +82,6 @@ const BlogsPage = () => {
                 <div
                   key={blog._id}
                   onClick={() => {
-                    localStorage.setItem("currentBlog", JSON.stringify(blog));
                     router.push(`/blogs/${blog.slug}`);
                   }}
                   className="w-full cursor-pointer"
