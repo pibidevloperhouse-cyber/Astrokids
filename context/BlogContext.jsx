@@ -13,25 +13,25 @@ export const BlogProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const res = await fetch("/api/getAllPosts", {
-          cache: "no-store",
-        });
-        const data = await res.json();
-        setBlogs(data || []);
-      } catch (e) {
-        setBlogs(sampleBlogs || []);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     fetchBlogs();
   }, []);
 
+  const fetchBlogs = async () => {
+    try {
+      const res = await fetch("/api/getAllPosts", {
+        cache: "no-store",
+      });
+      const data = await res.json();
+      setBlogs(data || []);
+    } catch (e) {
+      setBlogs(sampleBlogs || []);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <BlogContext.Provider value={{ blogs, isLoading }}>
+    <BlogContext.Provider value={{ blogs, isLoading, fetchBlogs }}>
       {children}
     </BlogContext.Provider>
   );

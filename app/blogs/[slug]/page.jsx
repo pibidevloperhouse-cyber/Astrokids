@@ -8,24 +8,29 @@ import { useEffect, useState } from "react";
 export default function BlogPage() {
   const [blogData, setBlogData] = useState(null);
   const pathname = usePathname();
-  const { Blogs, isLoading } = useBlog();
+  const { Blogs, isLoading, fetchBlogs } = useBlog();
 
   useEffect(() => {
-    const fetchBlogData = () => {
-      const slug = pathname.split("/blogs/")[1];
-
-      try {
-        console.log(Blogs, slug);
-        const blog = Blogs?.find((b) => b.slug === slug);
-        console.log(blog);
-        setBlogData(blog?.content);
-      } catch (error) {
-        console.log("Error fetching blog data:", error);
-      }
-    };
-
-    fetchBlogData();
+    if (Blogs) {
+      fetchBlogData();
+    } else {
+      fetchBlogs();
+      fetchBlogData();
+    }
   }, []);
+
+  const fetchBlogData = () => {
+    const slug = pathname.split("/blogs/")[1];
+
+    try {
+      console.log(Blogs, slug);
+      const blog = Blogs?.find((b) => b.slug === slug);
+      console.log(blog);
+      setBlogData(blog?.content);
+    } catch (error) {
+      console.log("Error fetching blog data:", error);
+    }
+  };
 
   if (isLoading) {
     return (
