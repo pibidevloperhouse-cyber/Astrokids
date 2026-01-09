@@ -19,7 +19,7 @@ const Header = ({ status = false }) => {
   const navItems = ["home", "about", "plans", "resources", "contact"];
   const pathName = usePathname().split("/")[1];
   const router = useRouter();
-  const { cart } = useCart();
+  // const { cart } = useCart();
 
   const menuRef = useRef(null);
   useEffect(() => {
@@ -169,7 +169,7 @@ const Header = ({ status = false }) => {
             </div>
           ))}
 
-          <div
+          {/* <div
             className="text-white relative cursor-pointer ml-auto mr-10"
             onClick={() => router.push("/cart")}
           >
@@ -177,7 +177,7 @@ const Header = ({ status = false }) => {
             <span className="absolute -top-2 -right-2 rounded-full bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center">
               {cart.length}
             </span>
-          </div>
+          </div> */}
         </div>
       )}
     </div>
