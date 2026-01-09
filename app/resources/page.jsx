@@ -1,6 +1,7 @@
 "use client";
 import Header from "@/components/Header";
 import NewFooter from "@/components/NewFooter";
+import { sampleBlogs } from "@/constant/constant";
 import { useBlog } from "@/context/BlogContext";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -17,8 +18,8 @@ const BlogsPage = () => {
   ];
   const [isSelect, setIsSelect] = useState(0);
   const router = useRouter();
-  const { blogs } = useBlog();
-  const [displayBlogs, setDisplayBlogs] = useState(blogs);
+  const { Blogs } = useBlog();
+  const [displayBlogs, setDisplayBlogs] = useState(Blogs || sampleBlogs);
 
   const getBlogImage = (content) => {
     const imageSection = content.find((section) => section.type === "image");
@@ -26,8 +27,8 @@ const BlogsPage = () => {
   };
 
   useEffect(() => {
-    setDisplayBlogs(blogs);
-  }, [blogs]);
+    setDisplayBlogs(Blogs);
+  }, [Blogs]);
 
   return (
     <div>
