@@ -19,6 +19,7 @@ const BlogsPage = () => {
   const [isSelect, setIsSelect] = useState(0);
   const router = useRouter();
   const { blogs, isLoading } = useBlog();
+  const [displayBlogs, setDisplayBlogs] = useState(blogs);
 
   const getBlogImage = (content) => {
     const imageSection = content.find((section) => section.type === "image");
@@ -72,9 +73,9 @@ const BlogsPage = () => {
               </div>
 
               <div>
-                {blogs.length > 0 ? (
+                {displayBlogs.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 place-items-center mt-5">
-                    {blogs.map((blog) => (
+                    {displayBlogs.map((blog) => (
                       <div
                         key={blog._id}
                         onClick={() => {
