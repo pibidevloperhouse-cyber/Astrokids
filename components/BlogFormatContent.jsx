@@ -4,10 +4,12 @@ import Header from "./Header";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useBlog } from "@/context/BlogContext";
 
 const BlogFormatContent = ({ content }) => {
   const [recentPosts, setRecentPosts] = useState([]);
   const router = useRouter();
+  const { blogs } = useBlog();
   const buttons = [
     "Recents",
     "Parenting Tips",
@@ -16,6 +18,7 @@ const BlogFormatContent = ({ content }) => {
     "Wellness",
     "Success Stories",
   ];
+
   useEffect(() => {
     const fetchRecentPosts = async () => {
       try {
@@ -53,9 +56,19 @@ const BlogFormatContent = ({ content }) => {
           className="text-[#6F6C90] text-[16px] md:text-[18px] leading-relaxed mb-4"
         >
           {text.split(link[0])[0]}
-          <a href={link[1]} className="text-[#2DB787] hover:underline">
+          <button
+            onClick={() => {
+              let blog = blogs.find(
+                (b) => b.slug === link[1].split("/blogs/")[1]
+              );
+
+              localStorage.setItem("currentBlog", JSON.stringify(blog));
+              router.push(`/blogs/${blog.slug}`);
+            }}
+            className="text-[#2DB787] hover:underline"
+          >
             {link[2]}
-          </a>
+          </button>
           {text.split(link[0])[1]}
         </p>
       );

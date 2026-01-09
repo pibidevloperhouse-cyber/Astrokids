@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CartProvider } from "@/context/CardContext";
 import Script from "next/script";
+import { BlogProvider } from "@/context/BlogContext";
 
 const openSans = Montserrat({
   subsets: ["latin"],
@@ -146,11 +147,13 @@ export default function RootLayout({ children }) {
         <Suspense>
           <SessionWrapper>
             <CartProvider>
-              <Script
-                type="text/javascript"
-                src="https://checkout.razorpay.com/v1/checkout.js"
-              />
-              {children}
+              <BlogProvider>
+                <Script
+                  type="text/javascript"
+                  src="https://checkout.razorpay.com/v1/checkout.js"
+                />
+                {children}
+              </BlogProvider>
             </CartProvider>
             <ToastContainer />
           </SessionWrapper>

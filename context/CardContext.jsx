@@ -1,4 +1,3 @@
-// context/CartContext.js
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
@@ -29,7 +28,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const updateQuantity = (id, qty) => {
-    if (qty < 1) return; // prevent 0 or negative
+    if (qty < 1) return;
     setCart((prev) =>
       prev.map((item) => (item.id === id ? { ...item, quantity: qty } : item))
     );

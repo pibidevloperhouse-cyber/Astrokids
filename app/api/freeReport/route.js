@@ -29,6 +29,8 @@ export async function POST(req) {
 
     const dasa = calculateDasa(date, planets[2]);
 
+    console.log(planets, panchang, dasa);
+
     return NextResponse.json(
       { planets, panchang, charts, dasa },
       { status: 200 }
