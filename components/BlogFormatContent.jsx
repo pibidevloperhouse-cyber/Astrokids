@@ -9,7 +9,7 @@ import { useBlog } from "@/context/BlogContext";
 const BlogFormatContent = ({ content }) => {
   const [recentPosts, setRecentPosts] = useState([]);
   const router = useRouter();
-  const { blogs } = useBlog();
+  const { Blogs } = useBlog();
   const buttons = [
     "Recents",
     "Parenting Tips",
@@ -58,7 +58,7 @@ const BlogFormatContent = ({ content }) => {
           {text.split(link[0])[0]}
           <button
             onClick={() => {
-              let blog = blogs.find(
+              let blog = Blogs.find(
                 (b) => b.slug === link[1].split("/blogs/")[1]
               );
 
