@@ -4,7 +4,7 @@ import NewFooter from "@/components/NewFooter";
 import { useBlog } from "@/context/BlogContext";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const BlogsPage = () => {
   const buttons = [
@@ -24,6 +24,10 @@ const BlogsPage = () => {
     const imageSection = content.find((section) => section.type === "image");
     return imageSection ? imageSection.image : "/images/new/blog.png";
   };
+
+  useEffect(() => {
+    setDisplayBlogs(blogs);
+  }, [blogs]);
 
   return (
     <div>
