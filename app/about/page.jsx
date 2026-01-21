@@ -34,7 +34,7 @@ const AboutPage = () => {
       desc: "Technology should empower, not complicate. Our AI models make Vedic astrology accessible to every family.",
     },
     {
-      title: "Raja Shreep",
+      title: "Nagaraj",
       con: "Lead Vedic Astrologer",
       desc: "Your child’s birth chart isn’t their destiny — it’s a roadmap to their strengths. Let’s walk this journey together.",
     },
