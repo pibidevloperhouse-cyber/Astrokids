@@ -1,12 +1,11 @@
+import BlogClient from "@/components/BlogClient";
+
 export async function generateMetadata({ params }) {
   const { slug } = params;
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/getPost?slug=${slug}`,
-    {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-  );
+  const res = await fetch(`https://www.astrokids.ai/api/getPost?slug=${slug}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
 
   if (!res.ok) {
     return {
@@ -25,4 +24,8 @@ export async function generateMetadata({ params }) {
       description: post.metaDescription || "Default Description",
     },
   };
+}
+
+export default function BlogPage() {
+  return <BlogClient />;
 }

@@ -2,7 +2,6 @@
 import Header from "@/components/Header";
 import NewFooter from "@/components/NewFooter";
 import { sampleBlogs } from "@/constant/constant";
-import { useBlog } from "@/context/BlogContext";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -19,6 +18,7 @@ const BlogsPage = () => {
   const [isSelect, setIsSelect] = useState(0);
   const router = useRouter();
   const [displayBlogs, setDisplayBlogs] = useState(sampleBlogs);
+  const [allBlogs, setAllBlogs] = useState([]);
 
   const getBlogImage = (content) => {
     const imageSection = content.find((section) => section.type === "image");
@@ -31,6 +31,7 @@ const BlogsPage = () => {
         cache: "no-store",
       });
       const data = await res.json();
+      setAllBlogs(data);
       setDisplayBlogs(data || []);
     };
 
@@ -58,8 +59,8 @@ const BlogsPage = () => {
                 if (index === 0) {
                   setDisplayBlogs(blogs);
                 } else {
-                  const filteredBlogs = blogs.filter(
-                    (blog) => blog.type === index
+                  const filteredBlogs = allBlogs.filter(
+                    (blog) => blog.type === index,
                   );
                   setDisplayBlogs(filteredBlogs);
                 }
@@ -82,7 +83,7 @@ const BlogsPage = () => {
                 <div
                   key={blog._id}
                   onClick={() => {
-                    router.push(`/blogs/${blog.slug}`);
+                    router.push(`/resources/${blog.slug}`);
                   }}
                   className="w-full cursor-pointer"
                 >
@@ -90,7 +91,7 @@ const BlogsPage = () => {
                     <div className="w-full aspect-video relative rounded-t-xl">
                       <Image
                         src={`https://drive.usercontent.google.com/download?id=${getBlogImage(
-                          blog.content
+                          blog.content,
                         )}`}
                         alt={blog.title}
                         fill

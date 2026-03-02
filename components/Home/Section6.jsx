@@ -39,7 +39,7 @@ const Section6 = () => {
               } relative w-full`}
             >
               <Link
-                href={`/blogs/${blog.link}`}
+                href={`/resources/${blog.link}`}
                 className="w-full h-full relative group"
               >
                 <div
@@ -96,7 +96,7 @@ const Section6 = () => {
             {blogs.map((blog, index) => (
               <CarouselItem key={index} className="w-[80%] relative">
                 <Link
-                  href={`/blogs/${blog.link}`}
+                  href={`/resources/${blog.link}`}
                   className="w-full h-full relative group"
                 >
                   <div className="relative max-md:w-full max-md:aspect-video">

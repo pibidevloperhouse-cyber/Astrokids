@@ -4,12 +4,10 @@ import Header from "./Header";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useBlog } from "@/context/BlogContext";
 
 const BlogFormatContent = ({ content }) => {
   const [recentPosts, setRecentPosts] = useState([]);
   const router = useRouter();
-  const { Blogs } = useBlog();
   const buttons = [
     "Recents",
     "Parenting Tips",
@@ -50,6 +48,7 @@ const BlogFormatContent = ({ content }) => {
     let link = text.match(/<a href="([^"]+)">([^<]+)<\/a>/);
     let bold = text.match(/<b>(.*?)<\/b>/);
     if (link) {
+      link = link.replace("https");
       return (
         <p
           key={index}
@@ -371,7 +370,7 @@ const BlogFormatContent = ({ content }) => {
                   key={blog._id}
                   onClick={() => {
                     localStorage.setItem("currentBlog", JSON.stringify(blog));
-                    router.push(`/blogs/${blog.slug}`);
+                    router.push(`/resources/${blog.slug}`);
                   }}
                   className="w-full cursor-pointer"
                 >

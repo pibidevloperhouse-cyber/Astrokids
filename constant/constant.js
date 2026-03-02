@@ -1053,7 +1053,7 @@ export const sampleBlogs = [
       },
       {
         type: "para",
-        content: `At AstroKids, we help parents like you understand your child's deeper personality, learning style, and emotional needs through Personalized <a herf="https://www.astrokids.ai/blogs/child-astrology-report">Child Astrology Reports </a>. These insights make parenting smoother, reduce daily struggles, and help you guide your child with clarity and confidence.`,
+        content: `At AstroKids, we help parents like you understand your child's deeper personality, learning style, and emotional needs through Personalized <a herf="https://www.astrokids.ai/resources/child-astrology-report">Child Astrology Reports </a>. These insights make parenting smoother, reduce daily struggles, and help you guide your child with clarity and confidence.`,
       },
     ],
     createdAt: "2025-09-04T06:04:14.360Z",
@@ -1231,7 +1231,7 @@ export const sampleBlogs = [
       },
       {
         type: "para",
-        content: `At AstroKids, we help parents understand their child's unique personality through personalized <a href="https://www.astrokids.ai/blogs/child-astrology-report"> Child Astrology Reports </a>. These reports provide deeper insights into your child's strengths, emotional needs, and learning style, helping you parent with clarity and confidence.`,
+        content: `At AstroKids, we help parents understand their child's unique personality through personalized <a href="https://www.astrokids.ai/resources/child-astrology-report"> Child Astrology Reports </a>. These reports provide deeper insights into your child's strengths, emotional needs, and learning style, helping you parent with clarity and confidence.`,
       },
     ],
     createdAt: "2025-08-25T06:49:49.449Z",
@@ -1416,7 +1416,7 @@ export const sampleBlogs = [
       {
         type: "para",
         content:
-          ' Get a <a href="https://www.astrokids.ai/blogs/child-astrology-report">Child Astrology Report</a> tailored insights to help you raise your child with wisdom, not worry.',
+          ' Get a <a href="https://www.astrokids.ai/resources/child-astrology-report">Child Astrology Report</a> tailored insights to help you raise your child with wisdom, not worry.',
       },
     ],
     createdAt: "2025-08-18T10:04:50.653Z",
@@ -1627,7 +1627,7 @@ export const sampleBlogs = [
       {
         type: "para",
         content:
-          'At AstroKids, we provide  <a href="https://www.astrokids.ai/blogs/child-astrology-report">Child Astrology Report</a> that gives you a personalized roadmap based on your child\'s exact birth details .So your parenting is guided by wisdom, not guesswork.',
+          'At AstroKids, we provide  <a href="https://www.astrokids.ai/resources/child-astrology-report">Child Astrology Report</a> that gives you a personalized roadmap based on your child\'s exact birth details .So your parenting is guided by wisdom, not guesswork.',
       },
     ],
     createdAt: "2025-08-14T08:42:59.646Z",
@@ -1850,7 +1850,7 @@ export const sampleBlogs = [
       {
         type: "para",
         content:
-          ' Our <a href="https://www.astrokids.ai/blogs/child-astrology-report">Child Astrology Report </a>gives you a personalized roadmap based on their exact birth details — so your parenting journey is guided by wisdom, not guesswork.',
+          ' Our <a href="https://www.astrokids.ai/resources/child-astrology-report">Child Astrology Report </a>gives you a personalized roadmap based on their exact birth details — so your parenting journey is guided by wisdom, not guesswork.',
       },
     ],
     createdAt: "2025-08-12T10:20:59.063Z",
@@ -2026,7 +2026,7 @@ export const sampleBlogs = [
       {
         type: "para",
         content:
-          'Explore our <a href="https://www.astrokids.ai/blogs/child-astrology-report">personalized Child Astrology Report </a>designed for conscious parenting.',
+          'Explore our <a href="https://www.astrokids.ai/resources/child-astrology-report">personalized Child Astrology Report </a>designed for conscious parenting.',
       },
     ],
     createdAt: "2025-08-09T08:05:07.674Z",
@@ -2266,7 +2266,7 @@ export const sampleBlogs = [
       {
         type: "para",
         content:
-          ' Explore our <a href="https://www.astrokids.ai/blogs/child-astrology-report">child astrology report designed for conscious parenting </a>. Your parenting can be guided by wisdom—not guesswork.',
+          ' Explore our <a href="https://www.astrokids.ai/resources/child-astrology-report">child astrology report designed for conscious parenting </a>. Your parenting can be guided by wisdom—not guesswork.',
       },
     ],
     createdAt: "2025-08-05T06:19:31.496Z",
@@ -2479,7 +2479,7 @@ export const sampleBlogs = [
       {
         type: "para",
         content:
-          'At AstroKids, we offer customized <a href="https://www.astrokids.ai/blogs/child-astrology-report ">child astrology report for parenting </a> . to help you:',
+          'At AstroKids, we offer customized <a href="https://www.astrokids.ai/resources/child-astrology-report ">child astrology report for parenting </a> . to help you:',
       },
       {
         type: "checklist",
@@ -2693,7 +2693,7 @@ export const sampleBlogs = [
       {
         type: "para",
         content:
-          'Get  your  <a href="https://www.astrokids.ai/blogs/child-astrology-report">child astrology report for parenting </a> .Make your parenting journey more peaceful, purposeful, and guided by the wisdom of the stars—only with AstroKids.',
+          'Get  your  <a href="https://www.astrokids.ai/resources/child-astrology-report">child astrology report for parenting </a> .Make your parenting journey more peaceful, purposeful, and guided by the wisdom of the stars—only with AstroKids.',
       },
     ],
     createdAt: "2025-07-22T06:29:32.682Z",
@@ -2935,7 +2935,7 @@ export const sampleBlogs = [
       {
         type: "para",
         content:
-          ' At AstroKids ,We provide  a <a href="https://www.astrokids.ai/blogs/child-astrology-report">personalized  AstroParenting Report</a>  for your child  and discover how to nurture their gifts and guide them with cosmic insight and love.',
+          ' At AstroKids ,We provide  a <a href="https://www.astrokids.ai/resources/child-astrology-report">personalized  AstroParenting Report</a>  for your child  and discover how to nurture their gifts and guide them with cosmic insight and love.',
       },
     ],
     createdAt: "2025-07-11T06:38:13.331Z",
@@ -3547,7 +3547,7 @@ export const sampleBlogs = [
       {
         type: "para",
         content:
-          'At AstroKids, we offer detailed <a href="https://www.astrokids.ai/blogs/child-astrology-report">personalized child astrology report </a> to help you understand your child\'s unique strengths and guide them with love and confidence.',
+          'At AstroKids, we offer detailed <a href="https://www.astrokids.ai/resources/child-astrology-report">personalized child astrology report </a> to help you understand your child\'s unique strengths and guide them with love and confidence.',
       },
     ],
     createdAt: "2025-06-28T10:05:32.047Z",
@@ -3716,7 +3716,7 @@ export const sampleBlogs = [
       { type: "subtitle", content: "Final Thoughts" },
       {
         type: "para",
-        content: `Raising a Barani Nakshatra child is a journey of the heart. They will challenge you, move you, and teach you more about emotional intelligence than any book ever could.  As parents, your biggest gift to them isn't being perfect—it's being present.  At AstroKids, we help you understand your child through <a href="https://www.astrokids.ai/blogs/Child-astrology-report"> child astrology report</a> . Because when you parent with soul, astrology isn't just ancient wisdom—it's your everyday guide.`,
+        content: `Raising a Barani Nakshatra child is a journey of the heart. They will challenge you, move you, and teach you more about emotional intelligence than any book ever could.  As parents, your biggest gift to them isn't being perfect—it's being present.  At AstroKids, we help you understand your child through <a href="https://www.astrokids.ai/resources/Child-astrology-report"> child astrology report</a> . Because when you parent with soul, astrology isn't just ancient wisdom—it's your everyday guide.`,
       },
       {
         type: "para",
@@ -3862,7 +3862,7 @@ export const sampleBlogs = [
       { type: "subtitle", content: " Final Thoughts" },
       {
         type: "para",
-        content: `Raising an Ashwini Nakshatra child is a powerful experience. They are born with the fire to lead, the instinct to heal, and the courage to walk their own path. We provide <a href="https://www.astrokids.ai/blogs/Child-astrology-report">child astrology report </a> that guide, understand, and support them with love. They'll challenge you—but they'll also amaze you. With the right balance of structure and freedom, they'll grow into leaders who inspire others and stay true to themselves. At AstroKids, we believe that understanding your child's nakshatra opens the door to more joyful, peaceful parenting. You don't have to guess anymore—you can parent with clarity, rooted in cosmic wisdom.`,
+        content: `Raising an Ashwini Nakshatra child is a powerful experience. They are born with the fire to lead, the instinct to heal, and the courage to walk their own path. We provide <a href="https://www.astrokids.ai/resources/Child-astrology-report">child astrology report </a> that guide, understand, and support them with love. They'll challenge you—but they'll also amaze you. With the right balance of structure and freedom, they'll grow into leaders who inspire others and stay true to themselves. At AstroKids, we believe that understanding your child's nakshatra opens the door to more joyful, peaceful parenting. You don't have to guess anymore—you can parent with clarity, rooted in cosmic wisdom.`,
       },
       {
         type: "para",
@@ -4220,7 +4220,7 @@ export const sampleBlogs = [
       },
       {
         type: "para",
-        content: `Parenting is not about controlling your child's path but walking beside them with awareness and love. Astrology adds a layer of understanding that helps you nurture their emotions, personality, and natural gifts.  At AstroKids, we believe that parenting isn't about perfection — it's about alignment. We use the ancient wisdom of Vedic Astrology and Ayurveda to create personalized <a href="https://www.astrokids.ai/blogs/Child-astrology-report ">child astrology report for parenting </a> . These offer deep insights into your child's personality, emotional needs, lifestyle recommendations, and more.  By honoring your child's zodiac blueprint, you create a home where they feel understood, supported, and free to become their best self — and that's the real miracle of parenting.`,
+        content: `Parenting is not about controlling your child's path but walking beside them with awareness and love. Astrology adds a layer of understanding that helps you nurture their emotions, personality, and natural gifts.  At AstroKids, we believe that parenting isn't about perfection — it's about alignment. We use the ancient wisdom of Vedic Astrology and Ayurveda to create personalized <a href="https://www.astrokids.ai/resources/Child-astrology-report ">child astrology report for parenting </a> . These offer deep insights into your child's personality, emotional needs, lifestyle recommendations, and more.  By honoring your child's zodiac blueprint, you create a home where they feel understood, supported, and free to become their best self — and that's the real miracle of parenting.`,
       },
     ],
     createdAt: "2025-06-13T08:53:24.483Z",
@@ -6353,7 +6353,7 @@ export const sampleBlogs = [
       },
       {
         type: "para",
-        content: `At AstroKids, we know that parenting often feels overwhelming, especially when each child has such unique needs. That's why we offer <a href="https://www.astrokids.ai/blogs/child-astrology-report">Child Astrology Reports </a>,designed to give parents deeper insights into their child's personality, emotional world, and learning style. Our goal is to make parenting easier, helping you raise your child  from newborn to young adult with clarity and confidence.`,
+        content: `At AstroKids, we know that parenting often feels overwhelming, especially when each child has such unique needs. That's why we offer <a href="https://www.astrokids.ai/resources/child-astrology-report">Child Astrology Reports </a>,designed to give parents deeper insights into their child's personality, emotional world, and learning style. Our goal is to make parenting easier, helping you raise your child  from newborn to young adult with clarity and confidence.`,
       },
     ],
     createdAt: "2025-09-02T10:43:15.733Z",

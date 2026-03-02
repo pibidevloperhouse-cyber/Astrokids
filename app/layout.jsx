@@ -69,7 +69,7 @@ export default function RootLayout({ children }) {
               {
                 "@type": "WebPage",
                 name: "Child-Related Blogs",
-                url: "https://www.astrokids.ai/blogs",
+                url: "https://www.astrokids.ai/resources",
               },
             ],
           })}

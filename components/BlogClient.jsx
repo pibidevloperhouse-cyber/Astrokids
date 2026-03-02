@@ -4,7 +4,7 @@ import BlogFormatContent from "@/components/BlogFormatContent";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function BlogPage() {
+const BlogClient = () => {
   const [blogData, setBlogData] = useState(null);
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
@@ -15,7 +15,7 @@ export default function BlogPage() {
 
   const fetchBlogData = async () => {
     setIsLoading(true);
-    const slug = pathname.split("/blogs/")[1];
+    const slug = pathname.split("/resources/")[1];
 
     try {
       const res = await fetch(`/api/getPost?slug=${slug}`, {
@@ -51,4 +51,6 @@ export default function BlogPage() {
       <BlogFormatContent content={blogData} />
     </div>
   );
-}
+};
+
+export default BlogClient;
