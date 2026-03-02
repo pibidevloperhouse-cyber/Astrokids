@@ -58,8 +58,10 @@ const Header = ({ status = false }) => {
                   item === "home"
                     ? "/"
                     : item === "remedial services"
-                    ? "/remedial-services"
-                    : `/${item}`
+                      ? "/remedial-services"
+                      : item == "resources"
+                        ? "/blogs"
+                        : `/${item}`
                 }`}
                 className={`${
                   pathName === item ||
@@ -128,8 +130,8 @@ const Header = ({ status = false }) => {
                       pathName === "" && item === "home"
                         ? "text-[#2DB787]"
                         : pathName === item
-                        ? "text-[#2DB787]"
-                        : "text-white"
+                          ? "text-[#2DB787]"
+                          : "text-white"
                     } cursor-pointer text-[16px] capitalize font-bold text-center py-2`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
