@@ -13,7 +13,7 @@ module.exports = {
         priority: 0.9,
       },
       { loc: "/confirm-order", changefreq: "daily", priority: 0.8 },
-      { loc: "/resources", changefreq: "daily", priority: 0.7 },
+      { loc: "/blogs", changefreq: "daily", priority: 0.7 },
     ];
   },
 };

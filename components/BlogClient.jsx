@@ -15,7 +15,7 @@ const BlogClient = () => {
 
   const fetchBlogData = async () => {
     setIsLoading(true);
-    const slug = pathname.split("/resources/")[1];
+    const slug = pathname.split("/blogs/")[1];
 
     try {
       const res = await fetch(`/api/getPost?slug=${slug}`, {

@@ -83,7 +83,7 @@ const BlogsPage = () => {
                 <div
                   key={blog._id}
                   onClick={() => {
-                    router.push(`/resources/${blog.slug}`);
+                    router.push(`/blogs/${blog.slug}`);
                   }}
                   className="w-full cursor-pointer"
                 >

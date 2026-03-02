@@ -370,7 +370,7 @@ const BlogFormatContent = ({ content }) => {
                   key={blog._id}
                   onClick={() => {
                     localStorage.setItem("currentBlog", JSON.stringify(blog));
-                    router.push(`/resources/${blog.slug}`);
+                    router.push(`/blogs/${blog.slug}`);
                   }}
                   className="w-full cursor-pointer"
                 >

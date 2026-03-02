@@ -39,7 +39,7 @@ const Section6 = () => {
               } relative w-full`}
             >
               <Link
-                href={`/resources/${blog.link}`}
+                href={`/blogs/${blog.link}`}
                 className="w-full h-full relative group"
               >
                 <div
@@ -96,7 +96,7 @@ const Section6 = () => {
             {blogs.map((blog, index) => (
               <CarouselItem key={index} className="w-[80%] relative">
                 <Link
-                  href={`/resources/${blog.link}`}
+                  href={`/blogs/${blog.link}`}
                   className="w-full h-full relative group"
                 >
                   <div className="relative max-md:w-full max-md:aspect-video">
@@ -144,7 +144,7 @@ const Section6 = () => {
         </Carousel>
         <button
           className="px-4 mx-auto py-2 group font-bold rounded-lg flex justify-center items-center gap-2 new-gradient hover:brightness-110 transition-all text-[18px] mt-5"
-          onClick={() => router.push("/resources")}
+          onClick={() => router.push("/blogs")}
         >
           Explore More Resources
           <ArrowUpRight size={20} className="group-hover:animate-intro" />
