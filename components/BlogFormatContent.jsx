@@ -48,7 +48,6 @@ const BlogFormatContent = ({ content }) => {
     let link = text.match(/<a href="([^"]+)">([^<]+)<\/a>/);
     let bold = text.match(/<b>(.*?)<\/b>/);
     if (link) {
-      link = link.replace("https");
       return (
         <p
           key={index}
