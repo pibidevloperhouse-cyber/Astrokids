@@ -136,6 +136,24 @@ export default function RootLayout({ children }) {
           }}
         />
         <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "AstroKids",
+              url: "https://www.astrokids.ai",
+              potentialAction: {
+                "@type": "SearchAction",
+                target:
+                  "https://www.astrokids.ai/blogs?search={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+
+        <script
           src="https://checkout.razorpay.com/v1/checkout.js"
           async
         ></script>

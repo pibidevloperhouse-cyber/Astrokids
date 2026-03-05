@@ -1,7 +1,6 @@
 "use client";
 import { heroComponent } from "@/constant/constant";
-import { useCart } from "@/context/CardContext";
-import { ChevronDown, ShoppingBag } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
@@ -67,7 +66,8 @@ const Header = ({ status = false }) => {
                   pathName === item ||
                   (pathName == "" && item == "home") ||
                   (item === "remedial services" &&
-                    pathName === "remedial-services")
+                    pathName === "remedial-services") ||
+                  (item === "resources" && pathName === "blogs")
                     ? "text-[#2DB787]"
                     : "text-white"
                 } cursor-pointer border-b-0 hover:border-b-2 capitalize border-[#5DF2CF] font-semibold px-4`}
