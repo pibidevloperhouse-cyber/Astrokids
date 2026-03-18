@@ -1,0 +1,22 @@
+import { MetadataRoute } from "next";
+
+async function getBlogs() {
+
+ const res = await fetch("https://www.astrokids.ai/api/blogs", {
+   next: { revalidate: 3600 }
+ });
+
+ return res.json();
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+
+ const blogs = await getBlogs();
+
+ return blogs.map((blog: any) => ({
+   url: `https://www.astrokids.ai/blogs/${blog.slug}`,
+   lastModified: new Date(blog.updatedAt),
+   changeFrequency: "weekly",
+   priority: 0.8,
+ }));
+}
