@@ -1,6 +1,6 @@
 async function getBlogs() {
-  const res = await fetch("https://www.astrokids.ai/api/getAllPosts", {
-    next: { revalidate: 3600 },
+  const res = await fetch("https://www.astrokids.ai/api/blogs", {
+    next: { revalidate: 3600 }
   });
 
   return res.json();
