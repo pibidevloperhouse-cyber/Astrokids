@@ -1,6 +1,6 @@
 export default function sitemap() {
 
-  const baseUrl = "https://www.astrokids.ai";
+  const baseUrl = "https://astrokids.ai";
 
   return [
 
