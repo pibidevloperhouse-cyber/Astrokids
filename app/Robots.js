@@ -8,8 +8,8 @@ export default function robots() {
     },
 
     sitemap: [
-      "https://www.astrokids.ai/sitemap.xml",
-      "https://www.astrokids.ai/blogs-sitemap.xml",
+      "https://astrokids.ai/sitemap.xml",
+      "https://astrokids.ai/blogs-sitemap.xml",
     ],
   };
 }
