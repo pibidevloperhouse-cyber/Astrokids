@@ -24,7 +24,7 @@ const NewFooter = () => {
     },
     {
       title: "plans",
-      items: ["choose-your-plan", "plan-benefits", "FAQ"],
+      items: ["choose-your-plan", "FAQ"],//plan-benefits remove 
     },
     {
       title: "resources",

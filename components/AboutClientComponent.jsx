@@ -172,7 +172,7 @@ const AboutClientComponent = () => {
         </h1>
         <button
           className="px-4 mx-auto py-2 font-bold rounded-lg flex justify-center items-center gap-2 new-gradient hover:brightness-110 transition-all mt-5"
-          onClick={() => router.push("/plans")}
+          onClick={() => router.push("/child-details")}
         >
           Explore Plans Tailored to Your Child
           <ArrowUpRight size={20} />

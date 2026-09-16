@@ -15,7 +15,7 @@ const Header = ({ status = false }) => {
   //   "resources",
   //   "contact",
   // ];
-  const navItems = ["home", "about", "plans", "resources", "contact"];
+  const navItems = ["home", "about", "resources", "contact"]; // plans nav is removed
   const pathName = usePathname().split("/")[1];
   const router = useRouter();
   // const { cart } = useCart();
@@ -109,7 +109,7 @@ const Header = ({ status = false }) => {
 
           <button
             className="hidden xl:block px-6 py-1 font-bold rounded-lg new-gradient hover:brightness-110 transition-all"
-            onClick={() => router.push("/plans")}
+            onClick={() => router.push("/child-details")}
           >
             Get Started
           </button>

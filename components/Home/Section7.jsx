@@ -53,7 +53,7 @@ const Section7 = () => {
       </div>
       <button
         className="px-4 mx-auto py-2 group font-bold rounded-lg flex justify-center items-center gap-2 new-gradient hover:brightness-110 transition-all text-[18px] mt-5"
-        onClick={() => router.push("/plans")}
+        onClick={() => router.push("/child-details")}
       >
         Start Your journey Now
         <ArrowUpRight size={20} className="group-hover:animate-intro" />

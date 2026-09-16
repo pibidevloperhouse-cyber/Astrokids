@@ -97,7 +97,7 @@ const Section5 = () => {
                     localStorage.setItem("orderIndex", ind);
                     router.push("/child-details");
                   } else {
-                    router.push("/plans");
+                    router.push("/child-details");//plans
                   }
                 }}
               >

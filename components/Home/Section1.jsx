@@ -34,7 +34,7 @@ const Section1 = () => {
             Holistically
           </h1>
           <div className="flex flex-col px-1 justify-center items-center mt-4 md:flex-row gap-5">
-            <button
+            {/* <button
               className="relative flex items-center justify-between gap-2 p-0.5 font-bold text-black bg-white rounded-full transition-all overflow-hidden group hover:bg-transparent"
               onClick={() => {
                 router.push("/plans");
@@ -50,7 +50,7 @@ const Section1 = () => {
                 className="z-20 text-white transition-all duration-300 ease-in-out group-hover:-rotate-45"
                 size={30}
               />
-            </button>
+            </button> */}
             <button
               className="relative flex items-center justify-between gap-2 p-0.5 font-bold text-black bg-white rounded-full transition-all overflow-visible group hover:bg-transparent"
               onClick={() => {
