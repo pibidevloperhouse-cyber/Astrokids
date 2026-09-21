@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { connectDB } from '@/lib/mongoose'
 import TempleAdmin from '@/models/TempleAdmin'
 import { verifyToken } from '@/lib/templeAuth'
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcrypt'
 
 export async function POST(request) {
   try {
