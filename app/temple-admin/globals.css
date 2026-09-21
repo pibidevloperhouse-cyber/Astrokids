@@ -1,0 +1,24 @@
+.circle-animation {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+
+  width: 600px;
+  height: 600px;
+
+  opacity: 0;
+
+  animation: circleRise 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes circleRise {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 350%) scale(0.7);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

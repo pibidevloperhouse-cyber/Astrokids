@@ -15,7 +15,7 @@ const Header = ({ status = false }) => {
   //   "resources",
   //   "contact",
   // ];
-  const navItems = ["home", "about", "resources", "contact"]; // plans nav is removed
+  const navItems = ["home", "about","Temple", "resources", "contact"]; // plans nav is removed
   const pathName = usePathname().split("/")[1];
   const router = useRouter();
   // const { cart } = useCart();
@@ -60,14 +60,17 @@ const Header = ({ status = false }) => {
                       ? "/remedial-services"
                       : item == "resources"
                         ? "/blogs"
-                        : `/${item}`
+                        : item === "Temple"
+                          ? "/temples"
+                          : `/${item}`
                 }`}
                 className={`${
                   pathName === item ||
                   (pathName == "" && item == "home") ||
                   (item === "remedial services" &&
                     pathName === "remedial-services") ||
-                  (item === "resources" && pathName === "blogs")
+                  (item === "resources" && pathName === "blogs") ||
+                  (item === "Temple" && pathName === "temples")
                     ? "text-[#2DB787]"
                     : "text-white"
                 } cursor-pointer border-b-0 hover:border-b-2 capitalize border-[#5DF2CF] font-semibold px-4`}
@@ -125,11 +128,21 @@ const Header = ({ status = false }) => {
                 <>
                   <Link
                     key={index}
-                    href={`/${item == "home" ? "" : item}`}
+                    href={
+                      item === "home"
+                        ? "/"
+                        : item === "remedial services"
+                          ? "/remedial-services"
+                          : item === "resources"
+                            ? "/blogs"
+                            : item === "Temple"
+                              ? "/temples"
+                              : `/${item}`
+                    }
                     className={`${
                       pathName === "" && item === "home"
                         ? "text-[#2DB787]"
-                        : pathName === item
+                        : (pathName === item || (item === "Temple" && pathName === "temples"))
                           ? "text-[#2DB787]"
                           : "text-white"
                     } cursor-pointer text-[16px] capitalize font-bold text-center py-2`}
