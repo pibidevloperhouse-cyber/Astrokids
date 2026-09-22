@@ -242,7 +242,7 @@ export default function TempleDetailPage() {
 
                             {/* Blessing Tags */}
                             <div className="flex flex-wrap gap-3 mb-6">
-                                {(temple.blessingTags?.length > 0 ? temple.blessingTags : ['Divine Blessings', 'Dosha Relief', 'Happy Household']).slice(0, 4).map(tag => (
+                                {(temple.blessingTags?.length > 0 ? temple.blessingTags : ['Divine Blessings', 'Dosha Relief', 'Happy Household']).map(tag => (
                                     <span
                                         key={tag}
                                         className="text-[14px] font-semibold rounded-full px-5 py-2 bg-white border border-gray-200 text-gray-700 shadow-sm"
