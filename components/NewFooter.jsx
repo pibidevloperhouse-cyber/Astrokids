@@ -88,7 +88,15 @@ const NewFooter = () => {
                     : "text-[#9396A3]"
                 } hover:text-[#FFEB3B]`}
                 onClick={() =>
-                  router.push(`${item.title === "home" ? "/" : item.title}`)
+                  router.push(
+                    `${
+                      item.title === "home"
+                        ? "/"
+                        : item.title === "plans"
+                        ? "/child-details"
+                        : item.title
+                    }`
+                  )
                 }
               >
                 {item.title}
@@ -98,9 +106,11 @@ const NewFooter = () => {
                   key={ind}
                   onClick={() =>
                     router.push(
-                      `${
-                        item.title === "home" ? "/" : item.title
-                      }#${i.toLowerCase()}`
+                      i === "choose-your-plan"
+                        ? "/child-details"
+                        : `${
+                            item.title === "home" ? "/" : item.title
+                          }#${i.toLowerCase()}`
                     )
                   }
                   className="text-[16px] cursor-pointer font-[500] capitalize hover:text-[#FFEB3B] transition-colors"
