@@ -19,7 +19,7 @@ const Section3 = () => {
         <div className="flex justify-center items-center flex-wrap py-5 gap-5 md:gap-10 px-2">
           <div
             className="w-[45%] py-4 px-3 flex flex-col md:py-8 group cursor-pointer overflow-hidden  md:px-6 new-gradient rounded-2xl relative group"
-            onClick={() => router.push("/plans")}
+            onClick={() => router.push("/child-details")}
           >
             <div className="absolute top-0 left-0 w-full h-full">
               <div className="relative w-full h-full">
@@ -58,7 +58,7 @@ const Section3 = () => {
           </div>
           <div
             className="w-[45%] py-4 flex flex-col md:py-8 group cursor-pointer overflow-hidden px-3 md:px-6 new-gradient rounded-2xl relative group"
-            onClick={() => router.push("/plans")}
+            onClick={() => router.push("/child-details")}
           >
             <div className="absolute top-0 left-0 w-full h-full">
               <div className="relative w-full h-full">
@@ -97,7 +97,7 @@ const Section3 = () => {
           </div>
           <div
             className="w-[95%] md:w-[50%] py-4 px-3 flex flex-col md:py-8 overflow-hidden cursor-pointer md:px-6 bg-gradient-to-br from-[#2B2B2B] to-[#3E3E3E] text-white rounded-2xl relative group"
-            onClick={() => router.push("/plans")}
+            onClick={() => router.push("/child-details")}
           >
             <div className="absolute top-0 left-0 w-full h-full">
               <div className="relative w-full h-full">
@@ -134,7 +134,10 @@ const Section3 = () => {
               />
             </button>
           </div>
-          <div className="w-[45%] md:w-[40%] py-8 overflow-hidden px-6 bg-gradient-to-tr from-[#1B1F3B] via-[#011498] to-[#6F8BEF] text-white rounded-2xl relative group">
+          <div
+            className="w-[45%] md:w-[40%] py-8 overflow-hidden cursor-pointer px-6 bg-gradient-to-tr from-[#1B1F3B] via-[#011498] to-[#6F8BEF] text-white rounded-2xl relative group"
+            onClick={() => router.push("/child-details")}
+          >
             <div className="absolute top-0 left-0 w-full h-full">
               <div className="relative w-full h-full">
                 <Image
@@ -176,7 +179,7 @@ const Section3 = () => {
           </div>
           <div
             className="w-[45%] md:w-[30%] py-4 px-3 flex flex-col md:py-8 overflow-hidden cursor-pointer md:px-6 bg-gradient-to-br from-[#2B2B2B] to-[#3E3E3E] text-white rounded-2xl relative group"
-            onClick={() => router.push("/plans")}
+            onClick={() => router.push("/child-details")}
           >
             <div className="absolute top-0 left-0 w-full h-full">
               <div className="relative w-full h-full">
@@ -213,7 +216,10 @@ const Section3 = () => {
               />
             </button>
           </div>
-          <div className="w-[45%] md:w-[32.5%] md:py-8 py-4 px-3 flex flex-col overflow-hidden md:px-6 new-gradient rounded-2xl relative group">
+          <div
+            className="w-[45%] md:w-[32.5%] md:py-8 py-4 px-3 flex flex-col overflow-hidden cursor-pointer md:px-6 new-gradient rounded-2xl relative group"
+            onClick={() => router.push("/child-details")}
+          >
             <div className="absolute top-0 left-0 w-full h-full">
               <div className="relative w-full h-full">
                 <Image
@@ -243,7 +249,10 @@ const Section3 = () => {
               </p>
             </div>
           </div>
-          <div className="w-[45%] md:w-[25%] overflow-hidden md:py-8 py-4 px-3 flex flex-col md:px-6 bg-white text-black rounded-2xl relative group">
+          <div
+            className="w-[45%] md:w-[25%] overflow-hidden cursor-pointer md:py-8 py-4 px-3 flex flex-col md:px-6 bg-white text-black rounded-2xl relative group"
+            onClick={() => router.push("/child-details")}
+          >
             <div className="absolute top-0 right-0">
               <div className="relative w-[60px] h-[60px]">
                 <Image
