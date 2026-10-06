@@ -15,7 +15,7 @@ const Header = ({ status = false }) => {
   //   "resources",
   //   "contact",
   // ];
-  const navItems = ["home", "about","Temple", "resources", "contact"]; // plans nav is removed
+  const navItems = ["home", "about","Temple Connect", "resources", "contact"]; // plans nav is removed
   const pathName = usePathname().split("/")[1];
   const router = useRouter();
   // const { cart } = useCart();

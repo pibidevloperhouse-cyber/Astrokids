@@ -83,7 +83,7 @@ const EmblaCarousel = (props) => {
                   </div>
                   <div
                     className="absolute -top-[7%] -right-[2%] new-gradient py-1 cursor-pointer px-3 rounded-tr-xl text-xl rounded-bl-xl"
-                    onClick={() => router.push("/plans")}
+                    onClick={() => router.push("/child-details")}
                   >
                     Try {slide.title.split("-")[0]} Plan
                   </div>
@@ -119,7 +119,7 @@ const EmblaCarousel = (props) => {
                     </p>
                   </div>
                   <button
-                    onClick={() => router.push("/plans")}
+                    onClick={() => router.push("/child-details")}
                     className="new-gradient self-end w-[90%] mx-auto flex mt-5 justify-center cursor-pointer items-center gap-4 py-3 text-sm font-semibold rounded-t-2xl"
                   >
                     Try {slide.title.split("-")[0]} Plan
