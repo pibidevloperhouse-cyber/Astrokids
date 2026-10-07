@@ -15,7 +15,7 @@ const Header = ({ status = false }) => {
   //   "resources",
   //   "contact",
   // ];
-  const navItems = ["home", "about","Temple Connect", "resources", "contact"]; // plans nav is removed
+  const navItems = ["home", "about", "Temple Connect", "resources", "contact"]; // plans nav is removed
   const pathName = usePathname().split("/")[1];
   const router = useRouter();
   // const { cart } = useCart();
@@ -53,27 +53,25 @@ const Header = ({ status = false }) => {
             {navItems.map((item, index) => (
               <Link
                 key={index}
-                href={`${
-                  item === "home"
+                href={`${item === "home"
                     ? "/"
                     : item === "remedial services"
                       ? "/remedial-services"
                       : item == "resources"
                         ? "/blogs"
-                        : item === "Temple"
+                        : item === "Temple Connect"
                           ? "/temples"
                           : `/${item}`
-                }`}
-                className={`${
-                  pathName === item ||
-                  (pathName == "" && item == "home") ||
-                  (item === "remedial services" &&
-                    pathName === "remedial-services") ||
-                  (item === "resources" && pathName === "blogs") ||
-                  (item === "Temple" && pathName === "temples")
+                  }`}
+                className={`${pathName === item ||
+                    (pathName == "" && item == "home") ||
+                    (item === "remedial services" &&
+                      pathName === "remedial-services") ||
+                    (item === "resources" && pathName === "blogs") ||
+                    (item === "Temple Connect" && pathName === "temples")
                     ? "text-[#2DB787]"
                     : "text-white"
-                } cursor-pointer border-b-0 hover:border-b-2 capitalize border-[#5DF2CF] font-semibold px-4`}
+                  } cursor-pointer border-b-0 hover:border-b-2 capitalize border-[#5DF2CF] font-semibold px-4`}
               >
                 {item}
               </Link>
@@ -135,17 +133,16 @@ const Header = ({ status = false }) => {
                           ? "/remedial-services"
                           : item === "resources"
                             ? "/blogs"
-                            : item === "Temple"
+                            : item === "Temple Connect"
                               ? "/temples"
                               : `/${item}`
                     }
-                    className={`${
-                      pathName === "" && item === "home"
+                    className={`${pathName === "" && item === "home"
                         ? "text-[#2DB787]"
-                        : (pathName === item || (item === "Temple" && pathName === "temples"))
+                        : (pathName === item || (item === "Temple Connect" && pathName === "temples"))
                           ? "text-[#2DB787]"
                           : "text-white"
-                    } cursor-pointer text-[16px] capitalize font-bold text-center py-2`}
+                      } cursor-pointer text-[16px] capitalize font-bold text-center py-2`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item}
