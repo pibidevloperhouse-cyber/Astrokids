@@ -21,14 +21,26 @@ import { CheckIcon, ChevronsUpDown } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import tz_lookup from "tz-lookup";
 
+const DEFAULT_COUNTRY = {
+  name: "India",
+  isoCode: "IN",
+  flag: "🇮🇳",
+  phonecode: "91",
+  currency: "INR",
+  latitude: "20.00000000",
+  longitude: "77.00000000",
+};
+
 export default function LocationInput({
   locationInput,
   setLocationInput,
   setPlace,
   setLatLon,
-  paymentCountry,
+  paymentCountry = DEFAULT_COUNTRY,
 }) {
-  const [selectedCountry, setSelectedCountry] = useState(paymentCountry);
+  const [selectedCountry, setSelectedCountry] = useState(
+    paymentCountry || DEFAULT_COUNTRY
+  );
   const [filteredCities, setFilteredCities] = useState([]);
 
   useEffect(() => {
@@ -113,7 +125,7 @@ export default function LocationInput({
             type="text"
             value={locationInput}
             isSearching={false}
-            placeholder={`Search city in ${selectedCountry.name}`}
+            placeholder={`Search city in ${selectedCountry?.name || "India"}`}
             onInput={(e) => handleCitySearch(e.target.value)}
           />
 
@@ -127,7 +139,7 @@ export default function LocationInput({
                     onSelect={() => handleCitySelect(city)}
                     value={city.name}
                   >
-                    {city.name}, {selectedCountry.name}
+                    {city.name}, {selectedCountry?.name || ""}
                   </CommandItem>
                 ))}
               </CommandGroup>

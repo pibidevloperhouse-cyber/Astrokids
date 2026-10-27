@@ -348,7 +348,7 @@ const Admin = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         dob: `${reportDetails.dob} ${reportDetails.time}:00`,
-        location: reportDetails.place.split(",")[0],
+        location: (place || reportDetails.place || locationInput || "").split(",")[0],
         lat: parseFloat(latLon.lat),
         lon: parseFloat(latLon.lon),
         gender: reportDetails.gender,
