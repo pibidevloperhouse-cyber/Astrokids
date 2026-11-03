@@ -2,13 +2,6 @@
 import { ArrowLeft, ArrowRight, CheckIcon, ChevronsUpDown } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import Image from "next/image";
 import { currency, NO_DECIMAL_CURRENCIES, pricing } from "@/constant/constant";
 import { toast } from "react-toastify";
@@ -51,8 +44,7 @@ const NewChildDetails = ({ session }) => {
   const orderId = useSearchParams().get("orderId");
   const [locationInputText, setLocationInputText] = useState("");
   const formRef = useRef(null);
-  const [api, setApi] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [paymentCountry, setPaymentCountry] = useState({
     name: "India",
     isoCode: "IN",
@@ -75,14 +67,12 @@ const NewChildDetails = ({ session }) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const savedIndex = localStorage.getItem("orderIndex");
+    localStorage.removeItem("orderIndex");
     const paymentCountryData = localStorage.getItem("paymentCountryData");
     if (paymentCountryData) {
       setPaymentCountry(JSON.parse(paymentCountryData));
     }
-    if (savedIndex) {
-      setCurrentIndex(Number(savedIndex));
-    }
+    setCurrentIndex(0);
   }, []);
 
   const paymentFunction = async () => {
@@ -292,28 +282,7 @@ const NewChildDetails = ({ session }) => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    if (!api) return;
 
-    const initialIndex = parseInt(currentIndex);
-    if (
-      !isNaN(initialIndex) &&
-      initialIndex >= 0 &&
-      initialIndex < pricing.length
-    ) {
-      setCurrentIndex(initialIndex);
-      api.scrollTo(initialIndex);
-    }
-    setCurrentIndex(api.selectedScrollSnap());
-
-    api.on("select", () => {
-      setCurrentIndex(api.selectedScrollSnap());
-    });
-  }, [api, currentIndex]);
-
-  const handleSlideChange = (index) => {
-    setCurrentIndex(index);
-  };
 
   useEffect(() => {
     if (paymentEdit) {
@@ -533,114 +502,50 @@ const NewChildDetails = ({ session }) => {
                 <h1 className="text-[rgb(17,23,41)] font-semibold text-[24px] leading-[1.2]">
                   Your Order
                 </h1>
-                <div className="bg-[#2DB787] rounded-xl mt-4 pb-1">
-                  <Carousel
-                    opts={{ align: "start", loop: true }}
-                    setApi={setApi}
-                  >
-                    <CarouselContent>
-                      {pricing.map((_, index) => (
-                        <CarouselItem
-                          key={index}
-                          className="w-full h-full relative"
-                        >
-                          <div className="w-[120px] aspect-[9/16] mx-auto relative">
-                            <Image
-                              src={`/images/book-cover${index}.png`}
-                              alt={`book-cover`}
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                          {index == 0 && (
-                            <p
-                              className={`absolute ${
-                                currentIndex == index ? "block" : "hidden"
-                              } px-3 rounded-bl-xl rounded-tr-xl top-0 w-max font-medium right-0 new-gradient text-white text-[12px]`}
-                            >
-                              Free
-                            </p>
-                          )}
-                          {index == 1 && (
-                            <p
-                              className={`absolute ${
-                                currentIndex == index ? "block" : "hidden"
-                              } px-3 rounded-bl-xl rounded-tr-xl top-0 w-max font-medium right-0 new-gradient text-white text-[12px]`}
-                            >
-                              Popular
-                            </p>
-                          )}
-                          {index == 2 && (
-                            <p
-                              className={`absolute ${
-                                currentIndex == index ? "block" : "hidden"
-                              } px-3 rounded-bl-xl rounded-tr-xl top-0 w-max font-medium right-0 new-gradient text-white text-[12px]`}
-                            >
-                              Parents' Choice
-                            </p>
-                          )}
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="translate-x-[80%]" />
-                    <CarouselNext className="-translate-x-[80%]" />
-                  </Carousel>
-                  <div className="flex justify-center my-2 space-x-2">
-                    {pricing.map((_, index) => (
-                      <button
-                        key={index}
-                        className={`w-2 h-2 rounded-full ${
-                          index === currentIndex ? "bg-white" : "bg-white/50"
-                        }`}
-                        onClick={() => handleSlideChange(index)}
-                      />
-                    ))}
+                <div className="bg-[#2DB787] rounded-xl mt-4 py-6 relative overflow-hidden">
+                  <div className="w-[120px] aspect-[9/16] mx-auto relative">
+                    <Image
+                      src="/images/book-cover0.png"
+                      alt="Starter Parenting Report"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="absolute px-3 rounded-bl-xl rounded-tr-xl top-0 w-max font-medium right-0 new-gradient text-white text-[12px]">
+                    Free
+                  </p>
+                </div>
+                <h1 className="text-[16px] font-bold leading-[1.2] text-[#111729] my-5">
+                  Starter Parenting
+                </h1>
+                <div className="bg-[#E3E8EF] w-full h-[1px]"></div>
+                <div className="my-5 flex flex-col gap-3">
+                  <div className="flex w-full justify-between">
+                    <h1 className="text-[16px] font-normal text-[#677489]">
+                      Subtotal
+                    </h1>
+                    <p className="text-[16px] text-[#111729] font-normal">
+                      {ConvertPrice(399)}
+                    </p>
+                  </div>
+                  <div className="flex w-full justify-between">
+                    <h1 className="text-[16px] font-normal text-[#677489]">
+                      Flat Discount
+                    </h1>
+                    <p className="text-[16px] text-red-400 font-normal">
+                      -{ConvertPrice(399)}
+                    </p>
                   </div>
                 </div>
-                {currentIndex != null && (
-                  <>
-                    <h1 className="text-[16px] font-bold leading-[1.2] text-[#111729] my-5">
-                      {pricing[currentIndex].title}
-                    </h1>
-                    <div className="bg-[#E3E8EF] w-full h-[1px]"></div>
-                    <div className="my-5 flex flex-col gap-3">
-                      <div className="flex w-full justify-between">
-                        <h1 className="text-[16px] font-normal text-[#677489]">
-                          Subtotal
-                        </h1>
-                        <p className="text-[16px] text-[#111729] font-normal">
-                          {ConvertPrice(
-                            parseInt(pricing[currentIndex].price) + 200
-                          )}
-                        </p>
-                      </div>
-                      <div className="flex w-full justify-between">
-                        <h1 className="text-[16px] font-normal text-[#677489]">
-                          Flat Discount
-                        </h1>
-                        <p className="text-[16px] text-red-400 font-normal">
-                          -
-                          {currentIndex === 0
-                            ? `${ConvertPrice(399)}`
-                            : `${ConvertPrice(200)}`}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="bg-[#E3E8EF] w-full h-[1px]"></div>
-                    <div className="flex w-full mt-4 justify-between">
-                      <h1 className="text-[16px] font-bold text-[#111729]">
-                        Total
-                      </h1>
-                      <p className="text-[16px] text-[#111729] font-semibold">
-                        {currentIndex === 0
-                          ? "Free"
-                          : `${ConvertPrice(
-                              parseInt(pricing[currentIndex].price)
-                            )}`}
-                      </p>
-                    </div>
-                  </>
-                )}
+                <div className="bg-[#E3E8EF] w-full h-[1px]"></div>
+                <div className="flex w-full mt-4 justify-between">
+                  <h1 className="text-[16px] font-bold text-[#111729]">
+                    Total
+                  </h1>
+                  <p className="text-[16px] text-[#111729] font-semibold">
+                    Free
+                  </p>
+                </div>
               </div>
             </div>
           </div>
