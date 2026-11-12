@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
             name: "Astro Kids - Astrology Prediction Reports for Children, Parenting Guides, Holistic Wellness Solutions",
             description:
               "Explore Astro Kids for personalized astrology reports tailored for children and toddlers. Unlock insights into health, education, and natural talents while receiving actionable parenting guidance and holistic wellness solutions with mindfulness, healing, and psychology.",
-            url: "https://www.astrokids.ai",
+            url: "https://astrokids-six.vercel.app",
             mainEntity: [
               {
                 "@type": "WebPage",
@@ -63,7 +63,7 @@ export default function RootLayout({ children }) {
               {
                 "@type": "WebPage",
                 name: "Child-Related Blogs",
-                url: "https://www.astrokids.ai/blogs",
+                url: "https://www.astrokids.a/blogs",
               },
             ],
           })}
