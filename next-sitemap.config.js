@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: "https://www.astrokids.ai/",
+  siteUrl: "https://www.astrokids-six.vercel.app/",
   generateRobotsTxt: true,
   generateIndexSitemap: true,
   exclude: ["/Admin@w0rk/**"],

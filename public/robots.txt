@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.astrokids.ai/
+Host: https://www.astrokids-six.vercel.app/
 
 # Sitemaps
-Sitemap: https://www.astrokids.ai/sitemap.xml
+Sitemap: https://www.astrokids-six.vercel.app/sitemap.xml
