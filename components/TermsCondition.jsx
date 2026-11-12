@@ -1,6 +1,8 @@
 import React from "react";
+import { getBaseUrl } from "@/lib/baseUrl";
 
 const TermsCondition = () => {
+  const siteDomain = getBaseUrl().replace(/^https?:\/\//, "");
   return (
     <div className=' text-black px-6 py-5'>
       <h1 className='title text-center xl:text-start'>Terms & Conditions</h1>
@@ -8,7 +10,7 @@ const TermsCondition = () => {
         <p>
           These terms and conditions of use (hereinafter referred as "Terms of
           Use" or "Terms") describe and govern the User's use of the content and
-          services offered by the website www.astrokids.ai or through PI-BI Info
+          services offered by the website {siteDomain} or through PI-BI Info
           Technologies LLP (hereinafter, "the Company") (hereinafter referred to
           as "We", "Us", "Our" or "Website" or "AstroKids").
         </p>
@@ -32,7 +34,7 @@ const TermsCondition = () => {
           give your express consent to these Terms of Use and that you are using
           this Website on your own volition without any form of coercion,
           inducement or influence whatsoever. If you do not agree with these
-          Terms of Use, please immediately leave www.astrokids.ai and do not use
+          Terms of Use, please immediately leave {siteDomain} and do not use
           or browse on the Website any further. You are advised to carefully
           read these Terms before proceeding with using this Website in any
           manner, including without limitation, accessing any content, material,
@@ -45,7 +47,7 @@ const TermsCondition = () => {
       <section>
         <h2 className='font-bold text-xl'>GENERAL DESCRIPTION</h2>
         <p>
-          The Website www.astrokids.ai is an internet-based web portal having
+          The Website {siteDomain} is an internet-based web portal having
           its existence on World Wide Web (and/or mobile application (as may be
           applicable) or other electronic medium) and provides information and
           content related to astrology, astrological predictions, data and
@@ -66,7 +68,7 @@ const TermsCondition = () => {
           any inaccurate, incorrect or wrong information provided by you on the
           Website in order to avail of the Website's services or purchase of the
           Website's products and you hereby unequivocally agree to indemnify
-          www.astrokids.ai the Company or its founders/directors against any
+          {siteDomain} the Company or its founders/directors against any
           losses, suits, monetary claims or legal costs in relation to the
           foregoing arising out of such incorrect or inaccurate information
           entered or provided by you on the Website for availing the products or

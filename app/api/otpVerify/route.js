@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import crypto from "crypto";
+import { getBaseUrl } from "@/lib/baseUrl";
 
 export async function POST(request) {
+  const baseUrl = getBaseUrl();
   const { email } = await request.json();
 
   try {
@@ -96,12 +98,12 @@ export async function POST(request) {
                     alt="signature" width="100px" />
                 <p>The Astrokids Team</p>
                 <a>support@astrokids.ai</a>
-                <a href="https://astrokids.ai/" style="
+                <a href="${baseUrl}/" style="
               display: block;
               color: black;
               text-decoration: none;
               margin: 10 0px;
-            ">astrokids.ai</a>
+            ">${baseUrl.replace(/^https?:\/\//, '')}</a>
             </div>
         </div>
     </div>`,

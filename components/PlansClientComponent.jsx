@@ -10,6 +10,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { getBaseUrl } from "@/lib/baseUrl";
 
 const PlansClientComponent = () => {
   const [isOpen, setIsOpen] = useState(0);
@@ -138,6 +139,8 @@ const PlansClientComponent = () => {
 
   const [showMore, setShowMore] = useState(false);
 
+  const baseUrl = getBaseUrl();
+
   const servicesStructuredData = [
     {
       "@context": "https://schema.org",
@@ -148,7 +151,7 @@ const PlansClientComponent = () => {
       provider: {
         "@type": "Organization",
         name: "AstroKids",
-        url: "https://www.astrokids.ai",
+        url: baseUrl,
       },
       serviceType: "Child Astrology Report",
       offers: {
@@ -156,10 +159,10 @@ const PlansClientComponent = () => {
         priceCurrency: "INR",
         price: "0.00",
         availability: "https://schema.org/InStock",
-        url: "https://www.astrokids.ai/plans",
+        url: `${baseUrl}/plans`,
       },
       image:
-        "https://www.astrokids.ai/_next/image?url=%2Fimages%2Fbook-cover0.png&w=1920&q=75",
+        `${baseUrl}/_next/image?url=%2Fimages%2Fbook-cover0.png&w=1920&q=75`,
     },
     {
       "@context": "https://schema.org",
@@ -170,17 +173,17 @@ const PlansClientComponent = () => {
       provider: {
         "@type": "Organization",
         name: "AstroKids",
-        url: "https://www.astrokids.ai",
+        url: baseUrl,
       },
       offers: {
         "@type": "Offer",
         priceCurrency: "INR",
         price: "499.00",
         availability: "https://schema.org/InStock",
-        url: "https://www.astrokids.ai/plans",
+        url: `${baseUrl}/plans`,
       },
       image:
-        "https://www.astrokids.ai/_next/image?url=%2Fimages%2Fbook-cover1.png&w=1920&q=75",
+        `${baseUrl}/_next/image?url=%2Fimages%2Fbook-cover1.png&w=1920&q=75`,
     },
     {
       "@context": "https://schema.org",
@@ -191,17 +194,17 @@ const PlansClientComponent = () => {
       provider: {
         "@type": "Organization",
         name: "AstroKids",
-        url: "https://www.astrokids.ai",
+        url: baseUrl,
       },
       offers: {
         "@type": "Offer",
         priceCurrency: "INR",
         price: "999.00",
         availability: "https://schema.org/InStock",
-        url: "https://www.astrokids.ai/plans",
+        url: `${baseUrl}/plans`,
       },
       image:
-        "https://www.astrokids.ai/_next/image?url=%2Fimages%2Fbook-cover2.png&w=1920&q=75",
+        `${baseUrl}/_next/image?url=%2Fimages%2Fbook-cover2.png&w=1920&q=75`,
     },
     {
       "@context": "https://schema.org",
@@ -212,17 +215,17 @@ const PlansClientComponent = () => {
       provider: {
         "@type": "Organization",
         name: "AstroKids",
-        url: "https://www.astrokids.ai",
+        url: baseUrl,
       },
       offers: {
         "@type": "Offer",
         priceCurrency: "INR",
         price: "1299.00",
         availability: "https://schema.org/InStock",
-        url: "https://www.astrokids.ai/plans",
+        url: `${baseUrl}/plans`,
       },
       image:
-        "https://www.astrokids.ai/_next/image?url=%2Fimages%2Fbook-cover3.png&w=1920&q=75",
+        `${baseUrl}/_next/image?url=%2Fimages%2Fbook-cover3.png&w=1920&q=75`,
     },
   ];
 

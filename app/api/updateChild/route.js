@@ -3,9 +3,11 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import path from "path";
 import fs from "fs";
+import { getBaseUrl } from "@/lib/baseUrl";
 
 export async function POST(request) {
   try {
+    const baseUrl = getBaseUrl();
     const client = await clientPromise;
     const database = client.db("AstroKids");
     const collection = database.collection("childDetails");
@@ -184,10 +186,10 @@ export async function POST(request) {
           <p>support@astrokids.ai</p>
 
           <a 
-            href="https://astrokids.ai/" 
+            href="${baseUrl}/" 
             style="color:#000;text-decoration:none;"
           >
-            astrokids.ai
+            ${baseUrl.replace(/^https?:\/\//, '')}
           </a>
         </div>
 

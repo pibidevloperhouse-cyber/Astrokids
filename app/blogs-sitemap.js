@@ -1,6 +1,7 @@
-export default function sitemap() {
+import { getBaseUrl } from "@/lib/baseUrl";
 
-  const baseUrl = "https://astrokids.ai";
+export default function sitemap() {
+  const baseUrl = getBaseUrl();
 
   return [
 

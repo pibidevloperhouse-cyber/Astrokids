@@ -1,8 +1,10 @@
 import BlogClient from "@/components/BlogClient";
+import { getBaseUrl } from "@/lib/baseUrl";
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
-  const res = await fetch(`https://www.astrokids.ai/api/getPost?slug=${slug}`, {
+  const baseUrl = getBaseUrl();
+  const res = await fetch(`${baseUrl}/api/getPost?slug=${slug}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
@@ -31,6 +33,7 @@ export async function generateMetadata({ params }) {
 
 export default function BlogPage({ params }) {
   const { slug } = params;
+  const baseUrl = getBaseUrl();
   const title = slug.replace(/-/g, " ");
   const jsonLd = {
     "@context": "https://schema.org",
@@ -47,12 +50,12 @@ export default function BlogPage({ params }) {
       name: "AstroKids",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.astrokids.ai/logo.png",
+        url: `${baseUrl}/logo.png`,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://www.astrokids.ai/blogs/${slug}`,
+      "@id": `${baseUrl}/blogs/${slug}`,
     },
   };
 
@@ -73,19 +76,19 @@ export default function BlogPage({ params }) {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://www.astrokids.ai",
+                item: baseUrl,
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Blogs",
-                item: "https://www.astrokids.ai/blogs",
+                item: `${baseUrl}/blogs`,
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: title,
-                item: `https://www.astrokids.ai/blogs/${slug}`,
+                item: `${baseUrl}/blogs/${slug}`,
               },
             ],
           }),

@@ -1,12 +1,14 @@
 import React from "react";
+import { getBaseUrl } from "@/lib/baseUrl";
 
 const Privacy = () => {
+  const siteDomain = getBaseUrl().replace(/^https?:\/\//, "");
   return (
     <div className=' text-black px-6 py-5'>
       <h1 className='title text-center xl:text-start'>Privacy Policy</h1>
       <section>
         <p>
-          The website www.astrokids.ai (hereinafter referred to as "we",
+          The website {siteDomain} (hereinafter referred to as "we",
           "AstroKids" or "the Website") is committed to protect the privacy of
           the users of the website. Please read this privacy policy carefully to
           understand how the Website is going to use your information supplied
@@ -29,7 +31,7 @@ const Privacy = () => {
           indicate that you understand the terms and expressly consent to the
           Privacy Policy of this Website. If you do not agree with the terms of
           this privacy policy, please do not use this website and immediately
-          leave www.astrokids.ai Your continued use of this Website shall
+          leave {siteDomain} Your continued use of this Website shall
           confirm that you have provided your unconditional consent, approval
           and confirm to the terms of this Privacy Policy as regards collecting,
           maintaining, using, processing and disclosing your personal and other

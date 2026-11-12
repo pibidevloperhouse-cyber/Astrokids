@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import { CartProvider } from "@/context/CardContext";
 import Script from "next/script";
 import { BlogProvider } from "@/context/BlogContext";
+import { getBaseUrl } from "@/lib/baseUrl";
 
 
 const customFont = localFont({
@@ -33,6 +34,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   Clarity.init("sdlo5wowr6");
+  const baseUrl = getBaseUrl();
   return (
     <html lang="en">
       <head>
@@ -53,17 +55,17 @@ export default function RootLayout({ children }) {
             name: "Astro Kids - Astrology Prediction Reports for Children, Parenting Guides, Holistic Wellness Solutions",
             description:
               "Explore Astro Kids for personalized astrology reports tailored for children and toddlers. Unlock insights into health, education, and natural talents while receiving actionable parenting guidance and holistic wellness solutions with mindfulness, healing, and psychology.",
-            url: "https://astrokids-six.vercel.app",
+            url: baseUrl,
             mainEntity: [
               {
                 "@type": "WebPage",
                 name: "Get Child Report",
-                url: "https://www.astrokids.ai/child-details",
+                url: `${baseUrl}/child-details`,
               },
               {
                 "@type": "WebPage",
                 name: "Child-Related Blogs",
-                url: "https://www.astrokids.a/blogs",
+                url: `${baseUrl}/blogs`,
               },
             ],
           })}
@@ -75,8 +77,8 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "AstroKids",
-              url: "https://astrokids.ai/",
-              logo: "https://astrokids.ai/images/logo4.png",
+              url: `${baseUrl}/`,
+              logo: `${baseUrl}/images/logo4.png`,
               sameAs: [
                 "https://www.facebook.com/profile.php?id=61568876184036",
                 "https://www.instagram.com/astro_kids_ai/",
@@ -99,31 +101,31 @@ export default function RootLayout({ children }) {
                   "@type": "ListItem",
                   position: 1,
                   name: "Home",
-                  item: "https://www.astrokids.ai/",
+                  item: `${baseUrl}/`,
                 },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: "Plans",
-                  item: "https://www.astrokids.ai/plans",
+                  item: `${baseUrl}/plans`,
                 },
                 {
                   "@type": "ListItem",
                   position: 3,
                   name: "Blogs",
-                  item: "https://www.astrokids.ai/blogs",
+                  item: `${baseUrl}/blogs`,
                 },
                 {
                   "@type": "ListItem",
                   position: 4,
                   name: "About",
-                  item: "https://www.astrokids.ai/about",
+                  item: `${baseUrl}/about`,
                 },
                 {
                   "@type": "ListItem",
                   position: 5,
                   name: "Contact",
-                  item: "https://www.astrokids.ai/contact",
+                  item: `${baseUrl}/contact`,
                 },
               ],
             }),
@@ -136,11 +138,11 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "AstroKids",
-              url: "https://www.astrokids.ai",
+              url: baseUrl,
               potentialAction: {
                 "@type": "SearchAction",
                 target:
-                  "https://www.astrokids.ai/blogs?search={search_term_string}",
+                  `${baseUrl}/blogs?search={search_term_string}`,
                 "query-input": "required name=search_term_string",
               },
             }),

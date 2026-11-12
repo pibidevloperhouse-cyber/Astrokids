@@ -1,5 +1,17 @@
+const rawUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.VERCEL_URL ||
+  process.env.NEXTAUTH_URL ||
+  "https://astrokids-six.vercel.app";
+
+let siteUrl = String(rawUrl).trim();
+if (!siteUrl.startsWith("http://") && !siteUrl.startsWith("https://")) {
+  siteUrl = `https://${siteUrl}`;
+}
+siteUrl = siteUrl.replace(/\/+$/, "");
+
 module.exports = {
-  siteUrl: "https://www.astrokids-six.vercel.app/",
+  siteUrl,
   generateRobotsTxt: true,
   generateIndexSitemap: true,
   exclude: ["/Admin@w0rk/**"],

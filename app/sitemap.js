@@ -1,5 +1,7 @@
+import { getBaseUrl } from "@/lib/baseUrl";
+
 export default function sitemap() {
-  const baseUrl = "https://astrokids-six.vercel.app";
+  const baseUrl = getBaseUrl();
 
   return [
     {

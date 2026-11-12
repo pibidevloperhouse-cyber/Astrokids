@@ -2,9 +2,11 @@ import nodemailer from "nodemailer";
 import fs from "fs";
 import path from "path";
 import clientPromise from "@/lib/mongo";
+import { getBaseUrl } from "@/lib/baseUrl";
 
 export async function POST(request) {
   try {
+    const baseUrl = getBaseUrl();
     const {
       email,
       name,
@@ -178,7 +180,7 @@ export async function POST(request) {
         </table>
 
         <div style="text-align:center;margin-top:20px;">
-          <a href="https://www.astrokids.ai/child-details?paymentEdit=true&orderId=${orderId}"
+          <a href="${baseUrl}/child-details?paymentEdit=true&orderId=${orderId}"
              style="background:#210535;color:white;padding:12px 24px;
              text-decoration:none;border-radius:6px;display:inline-block;">
             Edit Details
@@ -190,8 +192,8 @@ export async function POST(request) {
           <img src="cid:signature" width="110" style="display:block;margin-bottom:5px;" />
           <p><strong>The AstroKids Team</strong></p>
           <p>support@astrokids.ai</p>
-          <a href="https://astrokids.ai" style="color:#000;text-decoration:none;">
-            astrokids.ai
+          <a href="${baseUrl}" style="color:#000;text-decoration:none;">
+            ${baseUrl.replace(/^https?:\/\//, '')}
           </a>
         </div>
 

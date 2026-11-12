@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
+import { getBaseUrl } from "@/lib/baseUrl";
 
 export default function robots() {
+  const baseUrl = getBaseUrl();
   return {
     rules: {
       userAgent: "*",
@@ -8,8 +10,8 @@ export default function robots() {
     },
 
     sitemap: [
-      "https://astrokids.ai/sitemap.xml",
-      "https://astrokids.ai/blogs-sitemap.xml",
+      `${baseUrl}/sitemap.xml`,
+      `${baseUrl}/blogs-sitemap.xml`,
     ],
   };
 }
