@@ -12,6 +12,8 @@
   }
 
   :root {
+    --font-open-sans: 'Montserrat', sans-serif;
+    --font-quicksand: 'Quicksand', sans-serif;
     --radius: 0.5rem;
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;

@@ -1,7 +1,6 @@
 import "./globals.css";
 import localFont from "next/font/local";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
-import { Montserrat, Quicksand } from "next/font/google";
 import SessionWrapper from "../components/SessionWrapper";
 import { Suspense } from "react";
 import Clarity from "@microsoft/clarity";
@@ -12,17 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Script from "next/script";
 import { BlogProvider } from "@/context/BlogContext";
 
-const openSans = Montserrat({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "700", "600", "800"],
-  variable: "--font-open-sans",
-});
-
-const quicksand = Quicksand({
-  subsets: ["latin"],
-  weight: ["400", "500", "700", "300"],
-  variable: "--font-quicksand",
-});
 
 const customFont = localFont({
   src: [
@@ -49,6 +37,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/images/logo4.png" type="image/png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap"
+          rel="stylesheet"
+        />
         <GoogleAnalytics gtmId="G-82PQ2WCYGX" />
         <GoogleTagManager gtmId="GTM-MDK2KCGP" />
 
@@ -159,7 +153,7 @@ export default function RootLayout({ children }) {
         ></script>
       </head>
       <body
-        className={`${customFont.variable} ${openSans.variable} ${quicksand.variable}`}
+        className={`${customFont.variable}`}
       >
         <ClarityWrapper />
         <Suspense>
